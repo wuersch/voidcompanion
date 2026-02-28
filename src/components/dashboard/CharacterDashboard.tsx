@@ -2,19 +2,31 @@ import { useState, useCallback, useMemo } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import { useCharacters } from '../../hooks/useCharacters'
 import { useSync } from '../../hooks/useSync'
+import { useCachedProgress } from '../../hooks/useCachedProgress'
 import DashboardTopBar from './DashboardTopBar'
 import DashboardFilterBar from './DashboardFilterBar'
 import type { SortKey } from './DashboardFilterBar'
 import CharacterGrid from './CharacterGrid'
+import type { Character } from '../../domain/types'
 import bgImage from '../../../assets/key-art-against-the-void.jpg'
 
-export default function CharacterDashboard() {
+export default function CharacterDashboard({
+  onSelectCharacter,
+}: {
+  onSelectCharacter: (character: Character) => void
+}) {
   const { logout } = useAuth()
   const { characters, isLoading, setCharacters } = useCharacters()
   const { syncState, sync } = useSync()
 
   const [realmFilter, setRealmFilter] = useState<string | null>(null)
   const [sortKey, setSortKey] = useState<SortKey>('name')
+
+  const characterIds = useMemo(
+    () => characters.map((c) => c.id),
+    [characters],
+  )
+  const progressMap = useCachedProgress(characterIds)
 
   const handleSync = useCallback(async () => {
     try {
@@ -86,8 +98,10 @@ export default function CharacterDashboard() {
 
           <CharacterGrid
             characters={filtered}
+            progressMap={progressMap}
             isLoading={isLoading}
             onSync={handleSync}
+            onSelect={onSelectCharacter}
           />
         </main>
       </div>

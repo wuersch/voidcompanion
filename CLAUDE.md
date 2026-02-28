@@ -75,7 +75,8 @@ src/
 ├── App.tsx            # App shell
 ├── vite-env.d.ts      # Vite type declarations
 ├── domain/
-│   └── types.ts       # Domain model (Character, Quest, SyncState, etc.)
+│   ├── types.ts             # Domain model (Character, Quest, SyncState, etc.)
+│   └── assembleProgress.ts  # Pure fn: raw API data + curated quest data → CharacterProgress
 ├── ports/
 │   ├── api.ts         # ApiPort interface (Blizzard API contract)
 │   ├── auth.ts        # AuthPort interface (OAuth contract)
@@ -92,24 +93,48 @@ src/
 │   │   ├── types.ts               # Raw Blizzard API response types
 │   │   ├── transforms.ts          # Raw → domain type transformers
 │   │   └── BlizzardApiAdapter.ts  # ApiPort implementation
-│   └── dexie-storage/
-│       └── DexieStorageAdapter.ts # StoragePort implementation (IndexedDB)
+│   ├── dexie-storage/
+│   │   └── DexieStorageAdapter.ts # StoragePort implementation (IndexedDB)
+│   └── wowhead/
+│       └── tooltips.ts            # Wowhead power.js loader + refreshLinks helper
 ├── data/
-│   └── classColors.ts # WoW class ID → hex color mapping
+│   ├── classColors.ts # WoW class ID → hex color mapping
+│   ├── pathfinder.ts  # Pathfinder achievement ID + 6 criteria definitions
+│   └── zones.ts       # Static curated zone/chapter/quest data (210 quests from Wowhead)
 ├── hooks/
-│   ├── useAuth.ts       # Auth state hook (isAuthenticated, login, logout)
-│   ├── useCharacters.ts # Load characters from storage on mount
-│   └── useSync.ts       # Sync characters from Blizzard API → storage
+│   ├── useAuth.ts           # Auth state hook (isAuthenticated, login, logout)
+│   ├── useCharacters.ts     # Load characters from storage on mount
+│   ├── useSync.ts           # Sync characters from Blizzard API → storage
+│   ├── useProgress.ts       # On-demand fetch + cache progress for one character
+│   └── useCachedProgress.ts # Load cached progress for all characters (dashboard badges)
 └── components/
     ├── LandingPage.tsx      # Landing/auth screen
     ├── CallbackHandler.tsx  # OAuth callback loading/error screen
-    └── dashboard/
-        ├── CharacterDashboard.tsx  # Main dashboard orchestrator
-        ├── DashboardTopBar.tsx     # Logo, sync button, logout
-        ├── DashboardFilterBar.tsx  # Realm pills + sort dropdown
-        ├── CharacterGrid.tsx       # Responsive card grid + skeletons + empty state
-        ├── CharacterCard.tsx       # Character card with avatar, info, stat badges
-        └── StatBadge.tsx           # Small label + value badge
+    ├── shared/
+    │   ├── Icons.tsx        # Inline Lucide SVG icons (ArrowLeft, Circle, CircleCheck, etc.)
+    │   ├── ProgressBar.tsx  # Horizontal fill bar with configurable color/height
+    │   ├── SectionHeader.tsx # Uppercase Cinzel label with gold underline
+    │   └── WowheadLink.tsx  # <a> linking to Wowhead with tooltip support
+    ├── dashboard/
+    │   ├── CharacterDashboard.tsx  # Main dashboard orchestrator
+    │   ├── DashboardTopBar.tsx     # Logo, sync button, logout
+    │   ├── DashboardFilterBar.tsx  # Realm pills + sort dropdown
+    │   ├── CharacterGrid.tsx       # Responsive card grid + skeletons + empty state
+    │   ├── CharacterCard.tsx       # Character card with avatar, info, real stat badges
+    │   └── StatBadge.tsx           # Small label + value badge
+    └── detail/
+        ├── CharacterDetail.tsx      # Detail view orchestrator (useProgress + 3 sections)
+        ├── DetailHeader.tsx         # Key art bg + avatar + hero info + back arrow
+        ├── CampaignSection.tsx      # Section header + ZoneRow list
+        ├── ZoneRow.tsx              # Zone thumbnail + progress bar + chapter count
+        ├── PathfinderSection.tsx     # 3-col grid of achievement criteria
+        ├── AchievementCriterion.tsx  # Circle/check icon + criterion name
+        ├── RenownSection.tsx        # Faction renown bars
+        ├── RenownRow.tsx            # Faction name + progress bar + level count
+        ├── ZoneDrillDown.tsx        # Zone quest view orchestrator
+        ├── ZoneHeader.tsx           # Zone key art + title + total progress
+        ├── ChapterGroup.tsx         # Left border accent + chapter status + quest list
+        └── QuestRow.tsx             # Quest completion icon + Wowhead-linked name
 ```
 
 ## Development Progress
@@ -123,6 +148,12 @@ src/
 - [x] **IndexedDB storage adapter**: Dexie.js behind StoragePort (characters, progress, syncState tables)
 - [x] **Blizzard API adapter**: ApiPort implementation with profile/media/achievements/quests/reputations endpoints
 - [x] **Character dashboard**: Top bar, realm filter/sort, responsive character card grid, sync flow, skeleton loading
+- [x] **Character detail view**: On-demand progress sync, campaign zones with quest progress, Pathfinder criteria, renown bars
+- [x] **Zone drill-down**: Per-quest checklist grouped by chapter, chapter status icons
+- [x] **Curated quest data**: 210 quests across 15 chapters from 5 zone story achievements (sourced from Wowhead)
+- [x] **Wowhead tooltips**: Lazy-loaded power.js, hover tooltips on quest/achievement links
+- [x] **App navigation**: Conditional rendering with browser back button support (pushState/popstate)
+- [x] **Real stat badges**: Dashboard character cards show cached campaign/pathfinder/renown progress
 
-### Next Up (PRD Phase 1 continued)
+### Next Up
 - [ ] **GitHub Pages deployment**: CI/CD pipeline

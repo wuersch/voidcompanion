@@ -14,6 +14,11 @@ All artwork, screenshots, logos, and promotional imagery in this directory are t
 |------|--------|-------------|
 | `key-art-against-the-void.jpg` | Midnight Pre-Expansion Update (12.0) | "Against the Void" key art, used as landing page background |
 | `wow-midnight-logo.png` | Midnight Pre-Expansion Update (12.0) | WoW: Midnight logo (en-US), used on landing page |
+| `zones/eversong-woods.jpg` | Midnight gamescom Reveal | Eversong Woods zone screenshot, used as zone thumbnail/header |
+| `zones/zulaman.jpg` | Midnight gamescom Reveal | Zul'Aman zone screenshot, used as zone thumbnail/header |
+| `zones/harandar.jpg` | Midnight gamescom Reveal | Harandar zone screenshot, used as zone thumbnail/header |
+| `zones/silvermoon.jpg` | Midnight gamescom Reveal | Silvermoon City zone screenshot, used as zone thumbnail/header |
+| `zones/voidstorm.jpg` | Midnight gamescom Reveal | Voidstorm zone screenshot, used as zone thumbnail/header |
 
 ## Usage
 

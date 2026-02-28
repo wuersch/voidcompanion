@@ -18,7 +18,6 @@ export type CampaignZone = {
   zoneId: string
   zoneName: string
   achievementId: number
-  wowheadUrl: string
   quests: Quest[]
   completedQuests: number
   totalQuests: number
@@ -27,7 +26,6 @@ export type CampaignZone = {
 export type Quest = {
   questId: number
   questName: string
-  wowheadUrl: string
   completed: boolean
   chapter?: string
 }
@@ -42,7 +40,6 @@ export type PathfinderCriterion = {
   achievementId: number
   name: string
   completed: boolean
-  wowheadUrl: string
 }
 
 export type FactionRenown = {

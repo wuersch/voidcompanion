@@ -1,4 +1,4 @@
-import type { Character } from '../../domain/types'
+import type { Character, CharacterProgress } from '../../domain/types'
 import CharacterCard from './CharacterCard'
 
 function SkeletonCard() {
@@ -24,12 +24,16 @@ function SkeletonCard() {
 
 export default function CharacterGrid({
   characters,
+  progressMap,
   isLoading,
   onSync,
+  onSelect,
 }: {
   characters: Character[]
+  progressMap: Map<string, CharacterProgress>
   isLoading: boolean
   onSync: () => void
+  onSelect: (character: Character) => void
 }) {
   if (isLoading) {
     return (
@@ -62,7 +66,12 @@ export default function CharacterGrid({
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {characters.map((c) => (
-        <CharacterCard key={c.id} character={c} />
+        <CharacterCard
+          key={c.id}
+          character={c}
+          progress={progressMap.get(c.id)}
+          onClick={() => onSelect(c)}
+        />
       ))}
     </div>
   )
