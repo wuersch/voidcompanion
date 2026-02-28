@@ -34,10 +34,13 @@ A client-side web application that tracks World of Warcraft: Midnight expansion 
 - **CSS Modules or Tailwind** for styling (team preference, but leaning Tailwind with custom theme)
 
 ### Authentication
-- **Blizzard OAuth 2.0 with PKCE** — client-side only, no client secret required
-- User clicks "Login with Battle.net" → redirected to Blizzard → returns with auth token
-- Token stored in memory (session only) or optionally in sessionStorage
+- **Blizzard OAuth 2.0 authorization code flow** — client-side only
+- User clicks "Login with Battle.net" → redirected to Blizzard → returns with auth code → exchanged for access token
+- Access token stored in sessionStorage (survives page refreshes, clears on tab close)
 - All Blizzard API calls made directly from the browser using the user's token
+- CSRF protection via random state nonce, validated on callback
+
+> **Note on client secret in the browser**: The original plan assumed Blizzard supported PKCE (Proof Key for Code Exchange), which would allow a pure public-client flow without a client secret. However, Blizzard's OAuth token endpoint requires a `client_secret` for the authorization code exchange, and PKCE is not supported as of early 2026. For a small friends-and-family app with no commercial use, the pragmatic choice is to embed the client secret in the SPA bundle via a build-time environment variable (`VITE_BLIZZARD_CLIENT_SECRET`). The risk is low: the secret identifies the *app*, not users — an attacker who extracts it can only make read-only Blizzard API calls under the app's identity, not access any user's data without that user's own access token. The worst case is Blizzard revoking the key, which is easily re-registered. If the app's audience grows beyond trusted users, the right fix is a lightweight token-exchange proxy (e.g. a Cloudflare Worker) that holds the secret server-side — the `AuthPort` interface already supports this swap without changing any UI code.
 
 ### Data Storage
 - **IndexedDB** via Dexie.js (or similar), behind a storage abstraction interface
@@ -60,7 +63,7 @@ All external dependencies hidden behind interfaces:
 │          │ Port     │                   │
 ├──────────┼──────────┼───────────────────┤
 │ Blizzard │ IndexedDB│ Blizzard OAuth    │
-│ API      │ (Dexie)  │ PKCE              │
+│ API      │ (Dexie)  │ Auth Code         │
 │ Adapter  │ Adapter  │ Adapter           │
 └──────────┴──────────┴───────────────────┘
 ```
@@ -309,7 +312,7 @@ The visual identity draws from the Midnight expansion's core tension: the golden
 ## MVP Scope
 
 ### In Scope (v1)
-- [x] Battle.net OAuth PKCE login
+- [x] Battle.net OAuth login
 - [x] Manual sync of all characters on the account
 - [x] Character dashboard with level and class info
 - [x] Campaign progress per zone (achievement-level, not quest-level for v1 if quest data curation takes time)
@@ -377,7 +380,7 @@ src/
 
 ### Phase 1: Foundation
 - Project scaffolding (Vite + React + TypeScript)
-- Blizzard OAuth PKCE flow
+- Blizzard OAuth authorization code flow
 - Storage abstraction + IndexedDB adapter
 - Basic character list from API
 - Deploy to GitHub Pages
