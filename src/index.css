@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/*
+ * Midnight Leveling Companion — Design System
+ * Derived from void-touched.pen design file
+ *
+ * Aesthetic: "Void-Touched Elegance"
+ * Deep midnight blues, void purples, and Sunwell golds
+ */
+
+@theme {
+  /* ── Backgrounds ── */
+  --color-bg-deep: #0a0b14;
+  --color-bg-surface: #111827;
+  --color-bg-elevated: #1a1f35;
+  --color-bg-overlay: #0a0b1499;
+
+  /* ── Borders ── */
+  --color-border-subtle: #1f2937;
+  --color-border-glow: #7c3aed33;
+
+  /* ── Text ── */
+  --color-text-primary: #e8e0d4;
+  --color-text-secondary: #9ca3af;
+  --color-text-dim: #6b7280;
+
+  /* ── Gold (Sunwell) ── */
+  --color-gold-light: #fbbf24;
+  --color-gold: #f59e0b;
+  --color-gold-dark: #d4a843;
+
+  /* ── Void ── */
+  --color-void-light: #a855f7;
+  --color-void: #7c3aed;
+  --color-void-dark: #6b21a8;
+
+  /* ── Accent ── */
+  --color-crimson: #dc2626;
+
+  /* ── Zone colors ── */
+  --color-zone-eversong: #c97b3a;
+  --color-zone-zulaman: #2d8a6e;
+  --color-zone-harandar: #4ecdc4;
+  --color-zone-silvermoon: #d4a843;
+  --color-zone-voidstorm: #7c6bf0;
+
+  /* ── Typography ── */
+  --font-display: "Cinzel", serif;
+  --font-body: "Source Sans 3", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ── Base styles ── */
+
+html {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-deep);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100dvh;
+}

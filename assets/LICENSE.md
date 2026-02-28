@@ -8,6 +8,13 @@ All artwork, screenshots, logos, and promotional imagery in this directory are t
 - **World of Warcraft Midnight gamescom Reveal** — zone screenshots, concept art
 - **World of Warcraft Midnight Launch** — alpha screenshots
 
+## Files
+
+| File | Source | Description |
+|------|--------|-------------|
+| `key-art-against-the-void.jpg` | Midnight Pre-Expansion Update (12.0) | "Against the Void" key art, used as landing page background |
+| `wow-midnight-logo.png` | Midnight Pre-Expansion Update (12.0) | WoW: Midnight logo (en-US), used on landing page |
+
 ## Usage
 
 This is a non-commercial fan project. These assets are used under Blizzard Entertainment's fan creation policy for fan sites and community projects. No ownership or affiliation with Blizzard Entertainment is claimed or implied.
