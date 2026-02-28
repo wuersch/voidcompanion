@@ -83,8 +83,17 @@ src/
 │   ├── PortsContext.ts # React context for dependency injection
 │   ├── context.tsx    # PortsProvider component
 │   └── usePorts.ts    # usePorts() hook
+├── adapters/
+│   └── blizzard-auth/
+│       ├── config.ts              # OAuth constants from VITE_ env vars
+│       ├── session.ts             # sessionStorage wrappers (token + CSRF state)
+│       └── BlizzardAuthAdapter.ts # AuthPort implementation
+├── hooks/
+│   └── useAuth.ts     # Auth state hook (isAuthenticated, login, logout)
 └── components/
-    └── LandingPage.tsx # Landing/auth screen
+    ├── LandingPage.tsx        # Landing/auth screen
+    ├── CallbackHandler.tsx    # OAuth callback loading/error screen
+    └── AuthenticatedShell.tsx # Post-auth placeholder
 ```
 
 ## Development Progress
@@ -94,9 +103,9 @@ src/
 - [x] **Design system extraction**: All tokens from .pen → Tailwind theme
 - [x] **Landing page shell**: Background key art, gradient overlay, logo, CTA button, footer
 - [x] **Ports & adapters architecture**: Domain types + port interfaces (ApiPort, AuthPort, StoragePort) + React Context DI
+- [x] **Blizzard OAuth**: Authorization code flow with Battle.net (client secret in SPA, sessionStorage token, EU default)
 
 ### Next Up (PRD Phase 1 continued)
-- [ ] **Blizzard OAuth PKCE**: Client-side auth flow with Battle.net
 - [ ] **Storage abstraction + IndexedDB adapter**: Dexie.js behind a port interface
 - [ ] **Basic character list**: Fetch account characters from Blizzard API
 - [ ] **GitHub Pages deployment**: CI/CD pipeline
