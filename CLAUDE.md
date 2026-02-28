@@ -6,7 +6,12 @@ A WoW: Midnight expansion leveling & progress tracker for a small friends-and-fa
 
 - **PRD**: `docs/PRD.md` — full product requirements, data model, API endpoints, architecture
 - **Design file**: `design/void-touched.pen` — all screens and design system (read with Pencil MCP tools, not plain text)
-- **Press kit artwork**: `design/assets/` — Blizzard press kit images used for design reference (see `design/assets/LICENSE.md` for attribution)
+- **Press kit artwork**: `design/assets/` — Blizzard press kit images used for design reference (untracked source toolbox)
+- **App assets**: `assets/` — images incorporated into the app (tracked, see `assets/LICENSE.md` for attribution)
+
+## Asset Workflow
+
+`design/assets/` is the source toolbox (untracked press kit files). When incorporating an image into the app, copy it to `assets/` at the project root and add it to version control. This keeps the source material separate from assets actually used in the build.
 
 ## Design System
 
