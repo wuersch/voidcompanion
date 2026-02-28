@@ -29,6 +29,7 @@ export type Quest = {
   questName: string
   completed: boolean
   chapter?: string
+  factionAlternative?: boolean
 }
 
 export type PathfinderProgress = {

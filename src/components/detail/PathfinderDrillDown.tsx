@@ -37,9 +37,12 @@ export default function PathfinderDrillDown({
   const headerImage = zoneDef?.image ?? bgImage
   const headerColor = zoneDef?.color ?? 'var(--color-void)'
 
-  const completedSubs = criterion.subCriteria.filter((sc) => sc.completed).length
-  const totalSubs = criterion.subCriteria.length
-  const percent = totalSubs > 0 ? Math.round((completedSubs / totalSubs) * 100) : 0
+  // Questline criteria: use required quest counts; exploration: use sub-criteria counts
+  const requiredQuests = isQuestline ? campaignZone!.quests.filter((q) => !q.factionAlternative) : []
+  const completedCount = isQuestline ? requiredQuests.filter((q) => q.completed).length : criterion.subCriteria.filter((sc) => sc.completed).length
+  const totalCount = isQuestline ? requiredQuests.length : criterion.subCriteria.length
+  const percent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0
+  const progressLabel = isQuestline ? 'Quests' : 'Criteria'
 
   return (
     <div className="min-h-dvh bg-bg-deep">
@@ -77,7 +80,7 @@ export default function PathfinderDrillDown({
 
           <div className="flex items-center gap-4">
             <span className="font-mono text-[13px] font-semibold text-text-secondary">
-              {completedSubs} / {totalSubs} Criteria
+              {completedCount} / {totalCount} {progressLabel}
             </span>
             <div className="w-[300px] max-w-full">
               <ProgressBar percent={percent} fillColor={headerColor} height={10} />

@@ -3,9 +3,11 @@ import { Circle, CircleCheck, ChevronRight } from '../shared/Icons'
 
 export default function AchievementCriterion({
   criterion,
+  questStats,
   onSelect,
 }: {
   criterion: PathfinderCriterion
+  questStats?: { completed: number; total: number }
   onSelect: () => void
 }) {
   const subs = criterion.subCriteria ?? []
@@ -30,9 +32,11 @@ export default function AchievementCriterion({
       >
         {criterion.name}
       </span>
-      {totalCount > 0 && (
+      {(questStats || totalCount > 0) && (
         <span className="shrink-0 rounded bg-bg-elevated px-1.5 py-0.5 font-mono text-[11px] text-text-dim">
-          {completedCount}/{totalCount}
+          {questStats && !criterion.completed
+            ? `${questStats.total > 0 ? Math.round((questStats.completed / questStats.total) * 100) : 0}%`
+            : `${completedCount}/${totalCount}`}
         </span>
       )}
       <ChevronRight size={14} className="shrink-0 text-text-dim" />

@@ -80,6 +80,7 @@ export default function CharacterDetail({
           />
           <PathfinderSection
             pathfinder={progress.pathfinder}
+            campaign={progress.campaign}
             onSelectCriterion={(achievementId) => onSelectPathfinder(achievementId, progress)}
           />
           <RenownSection renown={progress.renown} />

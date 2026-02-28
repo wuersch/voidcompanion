@@ -12,6 +12,7 @@ import voidstormImg from '../../assets/zones/voidstorm.jpg'
 export type QuestDef = {
   questId: number
   questName: string
+  factionAlternative?: boolean // Faction-gated duplicate; only one version completable per character
 }
 
 export type ChapterDef = {
@@ -43,7 +44,7 @@ export const ZONES: ZoneDef[] = [
         quests: [
           { questId: 86733, questName: 'Silvermoon Negotiations' },
           { questId: 86734, questName: 'Diplomacy' },
-          { questId: 86735, questName: 'Paved in Ash' },
+          { questId: 86735, questName: 'Paved in Ash', factionAlternative: true },
           { questId: 86736, questName: 'Paved in Ash' },
           { questId: 86737, questName: 'Fair Breeze, Light Bloom' },
           { questId: 86738, questName: 'Sharpmaw' },

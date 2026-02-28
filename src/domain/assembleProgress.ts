@@ -37,6 +37,7 @@ export function assembleProgress(
         questName: q.questName,
         completed: completedSet.has(q.questId),
         chapter: chapter.name,
+        factionAlternative: q.factionAlternative,
       })),
     )
     return {
