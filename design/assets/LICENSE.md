@@ -1,0 +1,16 @@
+# Blizzard Entertainment Asset Attribution
+
+All artwork, screenshots, logos, and promotional imagery in this directory are the property of **Blizzard Entertainment, Inc.** and are sourced from official World of Warcraft: Midnight press kits.
+
+## Press Kits Used
+
+- **Midnight Pre-Expansion Update (12.0)** — key art, logos, wallpapers
+- **World of Warcraft Midnight gamescom Reveal** — zone screenshots, concept art
+- **World of Warcraft Midnight Launch** — alpha screenshots
+
+## Usage
+
+This is a non-commercial fan project. These assets are used under Blizzard Entertainment's fan creation policy for fan sites and community projects. No ownership or affiliation with Blizzard Entertainment is claimed or implied.
+
+For Blizzard's full policy on fan creations, see:
+https://www.blizzard.com/en-us/legal/8bcb0794-6641-4ce3-a573-8eb243bab342

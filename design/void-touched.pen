@@ -1,0 +1,2706 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "DGYpa",
+      "x": 2000,
+      "y": 0,
+      "name": "Button/Primary",
+      "reusable": true,
+      "fill": {
+        "type": "gradient",
+        "gradientType": "linear",
+        "enabled": true,
+        "rotation": 180,
+        "size": {
+          "height": 1
+        },
+        "colors": [
+          {
+            "color": "$gold-mid",
+            "position": 0
+          },
+          {
+            "color": "$gold-dark",
+            "position": 1
+          }
+        ]
+      },
+      "cornerRadius": 12,
+      "padding": [
+        12,
+        24
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "J5lf6",
+          "name": "label",
+          "fill": "#0a0b14",
+          "content": "Button",
+          "fontFamily": "Source Sans 3",
+          "fontSize": 16,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "QA4zZ",
+      "x": 2000,
+      "y": 80,
+      "name": "Button/Secondary",
+      "reusable": true,
+      "fill": "transparent",
+      "cornerRadius": 12,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$void-mid"
+      },
+      "padding": [
+        12,
+        24
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "s5Y6P",
+          "name": "label",
+          "fill": "$text-primary",
+          "content": "Button",
+          "fontFamily": "Source Sans 3",
+          "fontSize": 16,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "CdiuF",
+      "x": 2000,
+      "y": 160,
+      "name": "Progress Bar",
+      "reusable": true,
+      "width": 200,
+      "height": 8,
+      "fill": "$bg-elevated",
+      "cornerRadius": 4,
+      "children": [
+        {
+          "type": "frame",
+          "id": "jwM4y",
+          "name": "fill",
+          "width": 120,
+          "height": "fill_container",
+          "fill": "$gold-mid",
+          "cornerRadius": 4
+        },
+        {
+          "type": "frame",
+          "id": "OVlYM",
+          "name": "empty",
+          "width": "fill_container",
+          "height": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "8VKTP",
+      "x": 2000,
+      "y": 200,
+      "name": "Stat Badge",
+      "reusable": true,
+      "fill": "$bg-elevated",
+      "cornerRadius": 8,
+      "gap": 4,
+      "padding": [
+        4,
+        10
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "B9vrm",
+          "name": "label",
+          "fill": "$text-secondary",
+          "content": "Campaign",
+          "fontFamily": "Source Sans 3",
+          "fontSize": 11
+        },
+        {
+          "type": "text",
+          "id": "f1pO5",
+          "name": "value",
+          "fill": "$text-primary",
+          "content": "3/5",
+          "fontFamily": "JetBrains Mono",
+          "fontSize": 11,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "KQ2Xe",
+      "x": 2000,
+      "y": 260,
+      "name": "Section Header",
+      "reusable": true,
+      "layout": "vertical",
+      "gap": 8,
+      "children": [
+        {
+          "type": "text",
+          "id": "ykgF4",
+          "name": "label",
+          "fill": "$text-primary",
+          "content": "SECTION TITLE",
+          "fontFamily": "Cinzel",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "letterSpacing": 2
+        },
+        {
+          "type": "frame",
+          "id": "ULreM",
+          "name": "underline",
+          "width": 60,
+          "height": 2,
+          "fill": "$gold-mid"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "OvBJq",
+      "x": 2000,
+      "y": 330,
+      "name": "Achievement Criterion",
+      "reusable": true,
+      "gap": 10,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "uYeCX",
+          "name": "icon",
+          "width": 18,
+          "height": 18,
+          "iconFontName": "circle",
+          "iconFontFamily": "lucide",
+          "fill": "$text-dim"
+        },
+        {
+          "type": "text",
+          "id": "MhHgj",
+          "name": "label",
+          "fill": "$text-secondary",
+          "content": "Criterion Name",
+          "fontFamily": "Source Sans 3",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "yuawT",
+      "x": 2000,
+      "y": 400,
+      "name": "Character Card",
+      "reusable": true,
+      "clip": true,
+      "width": 400,
+      "fill": "$bg-surface",
+      "cornerRadius": 16,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$border-subtle"
+      },
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 20,
+      "children": [
+        {
+          "type": "frame",
+          "id": "EpSjk",
+          "name": "cardTop",
+          "width": "fill_container",
+          "gap": 14,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "98vvi",
+              "name": "avatar",
+              "width": 64,
+              "height": 64,
+              "fill": "$bg-elevated",
+              "cornerRadius": 12
+            },
+            {
+              "type": "frame",
+              "id": "7O5n6",
+              "name": "info",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ouuDZ",
+                  "name": "charName",
+                  "fill": "$text-primary",
+                  "content": "Character Name",
+                  "fontFamily": "Cinzel",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "zdecb",
+                  "name": "realm",
+                  "fill": "$text-dim",
+                  "content": "Silvermoon",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "ojLOn",
+                  "name": "classRow",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "7S00K",
+                      "name": "classDot",
+                      "fill": "#F58CBA",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "ue2Jy",
+                      "name": "className",
+                      "fill": "$text-secondary",
+                      "content": "Paladin",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "f2T8e",
+              "name": "levelBadge",
+              "width": 40,
+              "height": 40,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#f59e0b22",
+                    "position": 0
+                  },
+                  {
+                    "color": "#f59e0b08",
+                    "position": 1
+                  }
+                ]
+              },
+              "cornerRadius": 20,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$gold-dark"
+              },
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zxtuZ",
+                  "name": "level",
+                  "fill": "$gold-mid",
+                  "content": "80",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "0Lpnv",
+          "name": "badges",
+          "width": "fill_container",
+          "gap": 8,
+          "children": [
+            {
+              "id": "UKipv",
+              "type": "ref",
+              "ref": "8VKTP",
+              "name": "badge1",
+              "descendants": {
+                "B9vrm": {
+                  "content": "Campaign"
+                },
+                "f1pO5": {
+                  "content": "3/5"
+                }
+              }
+            },
+            {
+              "id": "c0SDw",
+              "type": "ref",
+              "ref": "8VKTP",
+              "name": "badge2",
+              "descendants": {
+                "B9vrm": {
+                  "content": "Pathfinder"
+                },
+                "f1pO5": {
+                  "content": "4/6"
+                }
+              }
+            },
+            {
+              "id": "tHEeE",
+              "type": "ref",
+              "ref": "8VKTP",
+              "name": "badge3",
+              "descendants": {
+                "B9vrm": {
+                  "content": "Renown"
+                },
+                "f1pO5": {
+                  "content": "12/25"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "osfwK",
+      "x": 2000,
+      "y": 700,
+      "name": "Zone Row",
+      "reusable": true,
+      "clip": true,
+      "width": 700,
+      "fill": "$bg-surface",
+      "cornerRadius": 12,
+      "stroke": {
+        "thickness": 1,
+        "fill": "$border-subtle"
+      },
+      "gap": 16,
+      "padding": [
+        10,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "oApb5",
+          "name": "thumbnail",
+          "clip": true,
+          "width": 80,
+          "height": 50,
+          "fill": "$bg-elevated",
+          "cornerRadius": 8
+        },
+        {
+          "type": "frame",
+          "id": "v5wOT",
+          "name": "zoneInfo",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "children": [
+            {
+              "type": "frame",
+              "id": "sFWly",
+              "name": "topRow",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Zw3Dh",
+                  "name": "zoneName",
+                  "fill": "$text-primary",
+                  "content": "Zone Name",
+                  "fontFamily": "Cinzel",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "JdkA0",
+                  "name": "chapter",
+                  "fill": "$text-secondary",
+                  "content": "Chapter 3/5",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EbEiH",
+              "name": "progressRow",
+              "width": "fill_container",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "id": "aKiY4",
+                  "type": "ref",
+                  "ref": "CdiuF",
+                  "width": "fill_container",
+                  "name": "zoneBar"
+                },
+                {
+                  "type": "text",
+                  "id": "65emc",
+                  "name": "percent",
+                  "fill": "$text-secondary",
+                  "content": "60%",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "icon_font",
+          "id": "RIB8i",
+          "name": "chevron",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "chevron-right",
+          "iconFontFamily": "lucide",
+          "fill": "$text-dim"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "MNRwL",
+      "x": 2000,
+      "y": 800,
+      "name": "Quest Row",
+      "reusable": true,
+      "width": 600,
+      "gap": 10,
+      "padding": [
+        4,
+        0
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "AIZvO",
+          "name": "icon",
+          "width": 16,
+          "height": 16,
+          "iconFontName": "circle",
+          "iconFontFamily": "lucide",
+          "fill": "$text-dim"
+        },
+        {
+          "type": "text",
+          "id": "lyiw2",
+          "name": "questName",
+          "fill": "$text-secondary",
+          "content": "Quest Name",
+          "fontFamily": "Source Sans 3",
+          "fontSize": 14
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "pSJ1T",
+      "x": 0,
+      "y": 0,
+      "name": "Landing / Auth",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$bg-deep",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "FSYmu",
+          "x": 0,
+          "y": 0,
+          "name": "bgImage",
+          "clip": true,
+          "width": 1440,
+          "height": 900,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./assets/MidnightPreExpansionUpdate120/World of Warcraft Midnight  Against the Void Key Art/WoW_Midnight_Against_the_Void_Key_Art.jpg",
+            "mode": "fill"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "d7MMU",
+          "x": 0,
+          "y": 0,
+          "name": "bgOverlay",
+          "width": 1440,
+          "height": 900,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#0a0b14dd",
+                "position": 0
+              },
+              {
+                "color": "#0a0b1488",
+                "position": 0.7
+              },
+              {
+                "color": "#0a0b14aa",
+                "position": 1
+              }
+            ]
+          }
+        },
+        {
+          "type": "frame",
+          "id": "rCv2v",
+          "x": 0,
+          "y": 0,
+          "name": "contentCenter",
+          "width": 1440,
+          "height": 900,
+          "layout": "vertical",
+          "padding": [
+            60,
+            0
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "0K9LN",
+              "name": "logo",
+              "width": 420,
+              "height": 180,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./assets/MidnightPreExpansionUpdate120/World of Warcraft Midnight Logo/WoW_Midnight_Logo_enUS.png",
+                "mode": "fit"
+              }
+            },
+            {
+              "type": "text",
+              "id": "Nyhrp",
+              "name": "subtitle",
+              "fill": "$gold-dark",
+              "content": "LEVELING COMPANION",
+              "textAlign": "center",
+              "fontFamily": "Cinzel",
+              "fontSize": 18,
+              "fontWeight": "600",
+              "letterSpacing": 6
+            },
+            {
+              "type": "frame",
+              "id": "qSfPn",
+              "name": "spacer1",
+              "width": 10,
+              "height": 40
+            },
+            {
+              "type": "text",
+              "id": "Erihk",
+              "name": "tagline",
+              "fill": "$text-secondary",
+              "content": "Track your journey through Quel'Thalas",
+              "textAlign": "center",
+              "fontFamily": "Source Sans 3",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "0cKAu",
+              "name": "spacer2",
+              "width": 10,
+              "height": 32
+            },
+            {
+              "id": "Ud6KF",
+              "type": "ref",
+              "ref": "DGYpa",
+              "name": "loginBtn",
+              "descendants": {
+                "J5lf6": {
+                  "content": "Login with Battle.net",
+                  "fontSize": 16
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "FqMxF",
+              "name": "spacer3",
+              "width": 10,
+              "height": "fill_container"
+            },
+            {
+              "type": "text",
+              "id": "h43iT",
+              "name": "footer",
+              "fill": "$text-dim",
+              "content": "A fan-made companion app. Not affiliated with Blizzard Entertainment.",
+              "textAlign": "center",
+              "fontFamily": "Source Sans 3",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "d2yMA",
+      "x": 0,
+      "y": 1000,
+      "name": "Character Dashboard",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": [
+        {
+          "type": "image",
+          "opacity": 0.06,
+          "enabled": true,
+          "url": "./assets/MidnightPreExpansionUpdate120/World of Warcraft Midnight  Darkness Devours Key Art  Wallpapers/WoW_Midnight_DarknessDevours_Wallpaper_1920x1080.png",
+          "mode": "fill"
+        },
+        "$bg-deep"
+      ],
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Se4aY",
+          "name": "topBar",
+          "width": "fill_container",
+          "fill": "$bg-surface",
+          "stroke": {
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border-subtle"
+          },
+          "padding": [
+            14,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "yuqCa",
+              "name": "topLeft",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "2ymmK",
+                  "name": "topLogo",
+                  "width": 28,
+                  "height": 28,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./assets/MidnightPreExpansionUpdate120/World of Warcraft Midnight Logo/WoW_Midnight_Logo_enUS.png",
+                    "mode": "fit"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "3lO3z",
+                  "name": "topTitle",
+                  "fill": "$text-primary",
+                  "content": "Midnight Companion",
+                  "fontFamily": "Cinzel",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "U0alE",
+              "name": "topRight",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kzBVc",
+                  "name": "syncTxt",
+                  "fill": "$text-dim",
+                  "content": "Last synced 5 min ago",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "id": "vT5zb",
+                  "type": "ref",
+                  "ref": "QA4zZ",
+                  "padding": [
+                    6,
+                    14
+                  ],
+                  "cornerRadius": 8,
+                  "name": "syncBtn",
+                  "descendants": {
+                    "s5Y6P": {
+                      "content": "Sync",
+                      "fontSize": 13
+                    }
+                  }
+                },
+                {
+                  "type": "ellipse",
+                  "id": "0wWaO",
+                  "name": "userAvatar",
+                  "fill": "$bg-elevated",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$border-subtle"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "Tm3YW",
+                  "name": "logoutTxt",
+                  "fill": "$text-dim",
+                  "content": "Logout",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ryZHb",
+          "name": "filterBar",
+          "width": "fill_container",
+          "gap": 12,
+          "padding": [
+            12,
+            32
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "WcyF7",
+              "name": "pill1",
+              "fill": "$void-mid",
+              "cornerRadius": 20,
+              "padding": [
+                6,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZnaA0",
+                  "name": "pill1Txt",
+                  "fill": "$text-primary",
+                  "content": "All Characters",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bdRO7",
+              "name": "pill2",
+              "fill": "transparent",
+              "cornerRadius": 20,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "padding": [
+                6,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "94LiT",
+                  "name": "pill2Txt",
+                  "fill": "$text-secondary",
+                  "content": "Silvermoon",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HVaQ2",
+              "name": "pill3",
+              "fill": "transparent",
+              "cornerRadius": 20,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "padding": [
+                6,
+                16
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "1oJdU",
+                  "name": "pill3Txt",
+                  "fill": "$text-secondary",
+                  "content": "Stormrage",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "u4pk7",
+              "name": "filterSpacer",
+              "width": "fill_container",
+              "height": 10
+            },
+            {
+              "type": "text",
+              "id": "Zdfkq",
+              "name": "sortLabel",
+              "fill": "$text-dim",
+              "content": "Sort by:",
+              "fontFamily": "Source Sans 3",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "XTTOO",
+              "name": "sortPill",
+              "fill": "transparent",
+              "cornerRadius": 20,
+              "stroke": {
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "gap": 6,
+              "padding": [
+                6,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "JaWqf",
+                  "name": "sortTxt",
+                  "fill": "$text-secondary",
+                  "content": "Level",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "LuroF",
+                  "name": "sortIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "chevron-down",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-dim"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "d5oKX",
+          "name": "charGrid",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            20,
+            32
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "nc5Di",
+              "name": "row1",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "3CXzE",
+                  "type": "ref",
+                  "ref": "yuawT",
+                  "width": "fill_container",
+                  "name": "c1",
+                  "descendants": {
+                    "ouuDZ": {
+                      "content": "Thalindra"
+                    },
+                    "zdecb": {
+                      "content": "Silvermoon"
+                    },
+                    "7S00K": {
+                      "fill": "#F58CBA"
+                    },
+                    "ue2Jy": {
+                      "content": "Paladin"
+                    },
+                    "zxtuZ": {
+                      "content": "80"
+                    }
+                  }
+                },
+                {
+                  "id": "LZR1t",
+                  "type": "ref",
+                  "ref": "yuawT",
+                  "width": "fill_container",
+                  "name": "c2",
+                  "descendants": {
+                    "ouuDZ": {
+                      "content": "Voidweaver"
+                    },
+                    "zdecb": {
+                      "content": "Silvermoon"
+                    },
+                    "7S00K": {
+                      "fill": "#69CCF0"
+                    },
+                    "ue2Jy": {
+                      "content": "Mage"
+                    },
+                    "zxtuZ": {
+                      "content": "76"
+                    }
+                  }
+                },
+                {
+                  "id": "NgFLd",
+                  "type": "ref",
+                  "ref": "yuawT",
+                  "width": "fill_container",
+                  "name": "c3",
+                  "descendants": {
+                    "ouuDZ": {
+                      "content": "Lor'theron"
+                    },
+                    "zdecb": {
+                      "content": "Stormrage"
+                    },
+                    "7S00K": {
+                      "fill": "#C41E3A"
+                    },
+                    "ue2Jy": {
+                      "content": "Death Knight"
+                    },
+                    "zxtuZ": {
+                      "content": "80"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fUehW",
+              "name": "row2",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "WwpgQ",
+                  "type": "ref",
+                  "ref": "yuawT",
+                  "width": "fill_container",
+                  "name": "c4",
+                  "descendants": {
+                    "ouuDZ": {
+                      "content": "Sunwhisper"
+                    },
+                    "zdecb": {
+                      "content": "Silvermoon"
+                    },
+                    "7S00K": {
+                      "fill": "#ABD473"
+                    },
+                    "ue2Jy": {
+                      "content": "Hunter"
+                    },
+                    "zxtuZ": {
+                      "content": "73"
+                    }
+                  }
+                },
+                {
+                  "id": "c32AP",
+                  "type": "ref",
+                  "ref": "yuawT",
+                  "width": "fill_container",
+                  "name": "c5",
+                  "descendants": {
+                    "ouuDZ": {
+                      "content": "Quel'sira"
+                    },
+                    "zdecb": {
+                      "content": "Stormrage"
+                    },
+                    "7S00K": {
+                      "fill": "#FF7C0A"
+                    },
+                    "ue2Jy": {
+                      "content": "Druid"
+                    },
+                    "zxtuZ": {
+                      "content": "80"
+                    },
+                    "UKipv/f1pO5": {
+                      "content": "5/5"
+                    },
+                    "c0SDw/f1pO5": {
+                      "content": "6/6"
+                    },
+                    "tHEeE/f1pO5": {
+                      "content": "25/25"
+                    }
+                  }
+                },
+                {
+                  "id": "xdCfE",
+                  "type": "ref",
+                  "ref": "yuawT",
+                  "width": "fill_container",
+                  "name": "c6",
+                  "descendants": {
+                    "ouuDZ": {
+                      "content": "Duskfang"
+                    },
+                    "zdecb": {
+                      "content": "Silvermoon"
+                    },
+                    "7S00K": {
+                      "fill": "#A330C9"
+                    },
+                    "ue2Jy": {
+                      "content": "Warlock"
+                    },
+                    "zxtuZ": {
+                      "content": "68"
+                    },
+                    "UKipv/f1pO5": {
+                      "content": "1/5"
+                    },
+                    "c0SDw/f1pO5": {
+                      "content": "0/6"
+                    },
+                    "tHEeE/f1pO5": {
+                      "content": "3/25"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "r7Rnn",
+      "x": 0,
+      "y": 2124,
+      "name": "Character Detail",
+      "clip": true,
+      "width": 1440,
+      "height": 1400,
+      "fill": "$bg-deep",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "vOATB",
+          "name": "header",
+          "clip": true,
+          "width": "fill_container",
+          "height": 200,
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "zGMbo",
+              "x": 0,
+              "y": 0,
+              "name": "headerBg",
+              "clip": true,
+              "width": 1440,
+              "height": 200,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./assets/MidnightPreExpansionUpdate120/World of Warcraft Midnight Key Art  Hope Shall Rise/WoW_Midnight_Hope_Shall_Rise_Key_Art.jpg",
+                "mode": "fill"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "qqYYs",
+              "x": 0,
+              "y": 0,
+              "name": "headerOv",
+              "width": 1440,
+              "height": 200,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#0a0b1400",
+                    "position": 0
+                  },
+                  {
+                    "color": "#0a0b14cc",
+                    "position": 0.5
+                  },
+                  {
+                    "color": "#0a0b14ee",
+                    "position": 1
+                  }
+                ]
+              }
+            },
+            {
+              "type": "frame",
+              "id": "GTO6x",
+              "x": 0,
+              "y": 0,
+              "name": "headerContent",
+              "width": 1440,
+              "height": 200,
+              "gap": 24,
+              "padding": [
+                32,
+                40
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "N8d9F",
+                  "name": "backArr",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "arrow-left",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-secondary"
+                },
+                {
+                  "type": "frame",
+                  "id": "WftT3",
+                  "name": "avatar",
+                  "width": 96,
+                  "height": 96,
+                  "fill": "$bg-elevated",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "$border-glow"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "PiZwh",
+                  "name": "heroInfo",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "sODpw",
+                      "name": "heroName",
+                      "fill": "$text-primary",
+                      "content": "Thalindra",
+                      "fontFamily": "Cinzel",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vHmwi",
+                      "name": "heroMeta",
+                      "width": "fill_container",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "IkkpN",
+                          "name": "heroLvl",
+                          "fill": "$gold-mid",
+                          "content": "Level 80",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "ellipse",
+                          "id": "IMJY0",
+                          "name": "heroDot",
+                          "fill": "#F58CBA",
+                          "width": 6,
+                          "height": 6
+                        },
+                        {
+                          "type": "text",
+                          "id": "DPx1y",
+                          "name": "heroClass",
+                          "fill": "$text-secondary",
+                          "content": "Blood Elf Paladin",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "zHv1R",
+                          "name": "heroSpec",
+                          "fill": "$text-dim",
+                          "content": "Retribution",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "AQIsU",
+                      "name": "heroSync",
+                      "fill": "$text-dim",
+                      "content": "Last synced 5 min ago",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "4uaUo",
+          "name": "contentArea",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            32,
+            40
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "TxNzn",
+              "name": "campaignSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "flMCy",
+                  "type": "ref",
+                  "ref": "KQ2Xe",
+                  "name": "campHdr",
+                  "descendants": {
+                    "ykgF4": {
+                      "content": "CAMPAIGN PROGRESS"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "tVw0T",
+                  "name": "zoneList",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "id": "xn9QI",
+                      "type": "ref",
+                      "ref": "osfwK",
+                      "width": "fill_container",
+                      "name": "z1",
+                      "descendants": {
+                        "oApb5": {
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./assets/WorldofWarcraftMidnightgamescomReveal/World of Warcraft Midnight Zones Screenshots/WoW_Midnight_GamescomReveal_Eversong_Woods_001.jpg",
+                            "mode": "fill"
+                          }
+                        },
+                        "Zw3Dh": {
+                          "content": "Eversong Woods"
+                        },
+                        "JdkA0": {
+                          "content": "Chapter 3/5"
+                        },
+                        "65emc": {
+                          "content": "47%"
+                        }
+                      }
+                    },
+                    {
+                      "id": "RTQSn",
+                      "type": "ref",
+                      "ref": "osfwK",
+                      "width": "fill_container",
+                      "name": "z2",
+                      "descendants": {
+                        "oApb5": {
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./assets/WorldofWarcraftMidnightgamescomReveal/World of Warcraft Midnight Zones Screenshots/WoW_Midnight_GamescomReveal_ZulAman_010.jpg",
+                            "mode": "fill"
+                          }
+                        },
+                        "Zw3Dh": {
+                          "content": "Zul'Aman"
+                        },
+                        "JdkA0": {
+                          "content": "Chapter 2/5"
+                        },
+                        "aKiY4/jwM4y": {
+                          "fill": "$zone-zulaman",
+                          "width": 56
+                        },
+                        "65emc": {
+                          "content": "28%"
+                        }
+                      }
+                    },
+                    {
+                      "id": "CTa1o",
+                      "type": "ref",
+                      "ref": "osfwK",
+                      "width": "fill_container",
+                      "name": "z3",
+                      "descendants": {
+                        "oApb5": {
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./assets/WorldofWarcraftMidnightgamescomReveal/World of Warcraft Midnight Zones Screenshots/WoW_Midnight_GamescomReveal_Harandar_016.jpg",
+                            "mode": "fill"
+                          }
+                        },
+                        "Zw3Dh": {
+                          "content": "Harandar"
+                        },
+                        "JdkA0": {
+                          "content": "Chapter 1/5"
+                        },
+                        "aKiY4/jwM4y": {
+                          "fill": "$zone-harandar",
+                          "width": 24
+                        },
+                        "65emc": {
+                          "content": "12%"
+                        }
+                      }
+                    },
+                    {
+                      "id": "S8d5J",
+                      "type": "ref",
+                      "ref": "osfwK",
+                      "width": "fill_container",
+                      "name": "z4",
+                      "descendants": {
+                        "oApb5": {
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./assets/WorldofWarcraftMidnightgamescomReveal/World of Warcraft Midnight Zones Screenshots/WoW_Midnight_GamescomReveal_Voidstorm_020.jpg",
+                            "mode": "fill"
+                          }
+                        },
+                        "Zw3Dh": {
+                          "content": "Voidstorm"
+                        },
+                        "JdkA0": {
+                          "content": "Chapter 0/5"
+                        },
+                        "aKiY4/jwM4y": {
+                          "fill": "$zone-voidstorm",
+                          "width": 1
+                        },
+                        "65emc": {
+                          "content": "0%"
+                        }
+                      }
+                    },
+                    {
+                      "id": "XuTtx",
+                      "type": "ref",
+                      "ref": "osfwK",
+                      "width": "fill_container",
+                      "name": "z5",
+                      "descendants": {
+                        "oApb5": {
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "./assets/WorldofWarcraftMidnightgamescomReveal/World of Warcraft Midnight Zones Screenshots/WoW_Midnight_GamescomReveal_Silvermoon_City_007.jpg",
+                            "mode": "fill"
+                          }
+                        },
+                        "Zw3Dh": {
+                          "content": "Silvermoon / Arator"
+                        },
+                        "JdkA0": {
+                          "content": "Chapter 4/5"
+                        },
+                        "aKiY4/jwM4y": {
+                          "fill": "$zone-silvermoon",
+                          "width": 150
+                        },
+                        "65emc": {
+                          "content": "75%"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "r6Hr6",
+              "name": "pathfinderSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "4ZJFd",
+                  "type": "ref",
+                  "ref": "KQ2Xe",
+                  "name": "pathHdr",
+                  "descendants": {
+                    "ykgF4": {
+                      "content": "MIDNIGHT PATHFINDER"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "zMoqz",
+                  "name": "pathGrid",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "eCkN4",
+                      "name": "pCol1",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "id": "iFYDU",
+                          "type": "ref",
+                          "ref": "OvBJq",
+                          "name": "pc1",
+                          "descendants": {
+                            "uYeCX": {
+                              "iconFontName": "circle-check",
+                              "fill": "$gold-mid"
+                            },
+                            "MhHgj": {
+                              "content": "Explore Eversong Woods",
+                              "fill": "$text-primary"
+                            }
+                          }
+                        },
+                        {
+                          "id": "EiVxo",
+                          "type": "ref",
+                          "ref": "OvBJq",
+                          "name": "pc2",
+                          "descendants": {
+                            "uYeCX": {
+                              "iconFontName": "circle-check",
+                              "fill": "$gold-mid"
+                            },
+                            "MhHgj": {
+                              "content": "Zul'Aman Explorer",
+                              "fill": "$text-primary"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "f4gFW",
+                      "name": "pCol2",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "id": "hpv6d",
+                          "type": "ref",
+                          "ref": "OvBJq",
+                          "name": "pc3",
+                          "descendants": {
+                            "uYeCX": {
+                              "iconFontName": "circle-check",
+                              "fill": "$gold-mid"
+                            },
+                            "MhHgj": {
+                              "content": "Harandar Pathways",
+                              "fill": "$text-primary"
+                            }
+                          }
+                        },
+                        {
+                          "id": "gMVcq",
+                          "type": "ref",
+                          "ref": "OvBJq",
+                          "name": "pc4",
+                          "descendants": {
+                            "MhHgj": {
+                              "content": "Voidstorm Mapping"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "uP4Q5",
+                      "name": "pCol3",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "id": "ez4aN",
+                          "type": "ref",
+                          "ref": "OvBJq",
+                          "name": "pc5",
+                          "descendants": {
+                            "uYeCX": {
+                              "iconFontName": "circle-check",
+                              "fill": "$gold-mid"
+                            },
+                            "MhHgj": {
+                              "content": "Silvermoon Restored",
+                              "fill": "$text-primary"
+                            }
+                          }
+                        },
+                        {
+                          "id": "3B0Z5",
+                          "type": "ref",
+                          "ref": "OvBJq",
+                          "name": "pc6",
+                          "descendants": {
+                            "MhHgj": {
+                              "content": "Arator the Redeemer"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SzfvY",
+              "name": "renownSection",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "FXjSC",
+                  "type": "ref",
+                  "ref": "KQ2Xe",
+                  "name": "renHdr",
+                  "descendants": {
+                    "ykgF4": {
+                      "content": "FACTION RENOWN"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "Mk2MO",
+                  "name": "renList",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NpMMS",
+                      "name": "r1",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "E5z5L",
+                          "name": "r1n",
+                          "fill": "$text-primary",
+                          "textGrowth": "fixed-width",
+                          "width": 200,
+                          "content": "Sunwell Reclamation",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "id": "DOTzr",
+                          "type": "ref",
+                          "ref": "CdiuF",
+                          "width": "fill_container",
+                          "height": 10,
+                          "name": "r1b",
+                          "descendants": {
+                            "jwM4y": {
+                              "width": 96,
+                              "fill": "$gold-mid"
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "RCOqL",
+                          "name": "r1v",
+                          "fill": "$text-secondary",
+                          "content": "12 / 25",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kKSLZ",
+                      "name": "r2",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "U3s8J",
+                          "name": "r2n",
+                          "fill": "$text-primary",
+                          "textGrowth": "fixed-width",
+                          "width": 200,
+                          "content": "Amani Coalition",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "id": "6zAYz",
+                          "type": "ref",
+                          "ref": "CdiuF",
+                          "width": "fill_container",
+                          "height": 10,
+                          "name": "r2b",
+                          "descendants": {
+                            "jwM4y": {
+                              "width": 160,
+                              "fill": "$zone-zulaman"
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "hTXBH",
+                          "name": "r2v",
+                          "fill": "$text-secondary",
+                          "content": "20 / 25",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tuqj9",
+                      "name": "r3",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "9sL5t",
+                          "name": "r3n",
+                          "fill": "$text-primary",
+                          "textGrowth": "fixed-width",
+                          "width": 200,
+                          "content": "Haranir Dreamweavers",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "id": "3jmXy",
+                          "type": "ref",
+                          "ref": "CdiuF",
+                          "width": "fill_container",
+                          "height": 10,
+                          "name": "r3b",
+                          "descendants": {
+                            "jwM4y": {
+                              "width": 32,
+                              "fill": "$zone-harandar"
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "jeghF",
+                          "name": "r3v",
+                          "fill": "$text-secondary",
+                          "content": "4 / 25",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "z9OIk",
+                      "name": "r4",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KVx8R",
+                          "name": "r4n",
+                          "fill": "$text-primary",
+                          "textGrowth": "fixed-width",
+                          "width": 200,
+                          "content": "Army of the Light",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "id": "7TU4y",
+                          "type": "ref",
+                          "ref": "CdiuF",
+                          "width": "fill_container",
+                          "height": 10,
+                          "name": "r4b",
+                          "descendants": {
+                            "jwM4y": {
+                              "width": 128,
+                              "fill": "$void-light"
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "NEeiT",
+                          "name": "r4v",
+                          "fill": "$text-secondary",
+                          "content": "16 / 25",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "6nYbl",
+      "x": 0,
+      "y": 3624,
+      "name": "Zone Drill-Down: Eversong Woods",
+      "clip": true,
+      "width": 1440,
+      "height": 1000,
+      "fill": "$bg-deep",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "IJ8WA",
+          "name": "zoneHeader",
+          "clip": true,
+          "width": "fill_container",
+          "height": 200,
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "IWzsv",
+              "x": 0,
+              "y": 0,
+              "name": "zBg",
+              "clip": true,
+              "width": 1440,
+              "height": 200,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./assets/WorldofWarcraftMidnightgamescomReveal/World of Warcraft Midnight Zones Screenshots/WoW_Midnight_GamescomReveal_Eversong_Woods_001.jpg",
+                "mode": "fill"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "8Cbgr",
+              "x": 0,
+              "y": 0,
+              "name": "zOv",
+              "width": 1440,
+              "height": 200,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#0a0b1400",
+                    "position": 0
+                  },
+                  {
+                    "color": "#0a0b14bb",
+                    "position": 0.4
+                  },
+                  {
+                    "color": "#0a0b14ee",
+                    "position": 1
+                  }
+                ]
+              }
+            },
+            {
+              "type": "frame",
+              "id": "Kdk5f",
+              "x": 0,
+              "y": 0,
+              "name": "zCont",
+              "width": 1440,
+              "height": 200,
+              "layout": "vertical",
+              "gap": 10,
+              "padding": [
+                32,
+                40
+              ],
+              "justifyContent": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "9EKsg",
+                  "name": "zBack",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "12rOL",
+                      "name": "zBackIco",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "arrow-left",
+                      "iconFontFamily": "lucide",
+                      "fill": "$text-secondary"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QQnTG",
+                      "name": "zBackTxt",
+                      "fill": "$text-secondary",
+                      "content": "Back to Thalindra",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "50ZqE",
+                  "name": "zSpacer",
+                  "width": 10,
+                  "height": "fill_container"
+                },
+                {
+                  "type": "text",
+                  "id": "1XdSA",
+                  "name": "zTitle",
+                  "fill": "$text-primary",
+                  "content": "Eversong Woods",
+                  "fontFamily": "Cinzel",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "yfFUp",
+                  "name": "zAchiev",
+                  "fill": "$gold-dark",
+                  "content": "Eversong In Reprise",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "Gmr4x",
+                  "name": "zProgRow",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Tu4zQ",
+                      "name": "zProgTxt",
+                      "fill": "$text-secondary",
+                      "content": "47 / 63 Quests",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "id": "vJogL",
+                      "type": "ref",
+                      "ref": "CdiuF",
+                      "width": 300,
+                      "height": 10,
+                      "name": "zProgBar",
+                      "descendants": {
+                        "jwM4y": {
+                          "fill": "$zone-eversong",
+                          "width": 224
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mSJfD",
+          "name": "questContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            40
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "deYok",
+              "name": "chapter1",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "left": 3
+                },
+                "fill": "$zone-eversong"
+              },
+              "layout": "vertical",
+              "padding": [
+                0,
+                0,
+                0,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "UTG0u",
+                  "name": "ch1Hdr",
+                  "width": "fill_container",
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xezYY",
+                      "name": "ch1T",
+                      "fill": "$text-primary",
+                      "content": "Chapter 1: Return to Eversong",
+                      "fontFamily": "Cinzel",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qlVUm",
+                      "name": "ch1St",
+                      "gap": 6,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "AXwPp",
+                          "name": "ch1Ico",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "circle-check",
+                          "iconFontFamily": "lucide",
+                          "fill": "$gold-mid"
+                        },
+                        {
+                          "type": "text",
+                          "id": "awJ3F",
+                          "name": "ch1Cnt",
+                          "fill": "$gold-mid",
+                          "content": "12/12",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WAn0U",
+                  "name": "ch1Q",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "id": "Vc8G8",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q1",
+                      "descendants": {
+                        "AIZvO": {
+                          "iconFontName": "circle-check",
+                          "fill": "$gold-mid"
+                        },
+                        "lyiw2": {
+                          "content": "The Sun King's Command",
+                          "fill": "$gold-dark"
+                        }
+                      }
+                    },
+                    {
+                      "id": "6nYB8",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q2",
+                      "descendants": {
+                        "AIZvO": {
+                          "iconFontName": "circle-check",
+                          "fill": "$gold-mid"
+                        },
+                        "lyiw2": {
+                          "content": "Shadows Over the Spire",
+                          "fill": "$gold-dark"
+                        }
+                      }
+                    },
+                    {
+                      "id": "yZq3c",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q3",
+                      "descendants": {
+                        "AIZvO": {
+                          "iconFontName": "circle-check",
+                          "fill": "$gold-mid"
+                        },
+                        "lyiw2": {
+                          "content": "Rallying the Rangers",
+                          "fill": "$gold-dark"
+                        }
+                      }
+                    },
+                    {
+                      "id": "7dMVJ",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q4",
+                      "descendants": {
+                        "AIZvO": {
+                          "iconFontName": "circle-check",
+                          "fill": "$gold-mid"
+                        },
+                        "lyiw2": {
+                          "content": "A Light in the Darkness",
+                          "fill": "$gold-dark"
+                        }
+                      }
+                    },
+                    {
+                      "id": "qtECa",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q5",
+                      "descendants": {
+                        "AIZvO": {
+                          "iconFontName": "circle-check",
+                          "fill": "$gold-mid"
+                        },
+                        "lyiw2": {
+                          "content": "The Farstrider's Oath",
+                          "fill": "$gold-dark"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RfFTl",
+              "name": "chapter2",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "left": 3
+                },
+                "fill": "$zone-eversong"
+              },
+              "layout": "vertical",
+              "padding": [
+                0,
+                0,
+                0,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "yIhHJ",
+                  "name": "ch2H",
+                  "width": "fill_container",
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kwArV",
+                      "name": "ch2T",
+                      "fill": "$text-primary",
+                      "content": "Chapter 2: The Sunwell's Shadow",
+                      "fontFamily": "Cinzel",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "7Jj4q",
+                      "name": "ch2S",
+                      "gap": 6,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "yeNa5",
+                          "name": "ch2I",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "loader",
+                          "iconFontFamily": "lucide",
+                          "fill": "$void-light"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bw4H1",
+                          "name": "ch2C",
+                          "fill": "$void-light",
+                          "content": "8/14",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2ISdF",
+                  "name": "ch2Q",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "id": "yloxS",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q6",
+                      "descendants": {
+                        "AIZvO": {
+                          "iconFontName": "circle-check",
+                          "fill": "$gold-mid"
+                        },
+                        "lyiw2": {
+                          "content": "Whispers of the Void",
+                          "fill": "$gold-dark"
+                        }
+                      }
+                    },
+                    {
+                      "id": "R6X1b",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q7",
+                      "descendants": {
+                        "AIZvO": {
+                          "iconFontName": "circle-check",
+                          "fill": "$gold-mid"
+                        },
+                        "lyiw2": {
+                          "content": "The Magister's Warning",
+                          "fill": "$gold-dark"
+                        }
+                      }
+                    },
+                    {
+                      "id": "ZSkaL",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q8",
+                      "descendants": {
+                        "AIZvO": {
+                          "iconFontName": "circle-check",
+                          "fill": "$gold-mid"
+                        },
+                        "lyiw2": {
+                          "content": "Sunstrider Isle Revisited",
+                          "fill": "$gold-dark"
+                        }
+                      }
+                    },
+                    {
+                      "id": "sjjTD",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q9",
+                      "descendants": {
+                        "lyiw2": {
+                          "content": "Void Tendrils Encroaching"
+                        }
+                      }
+                    },
+                    {
+                      "id": "y0Wim",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q10",
+                      "descendants": {
+                        "lyiw2": {
+                          "content": "The Wretched Reborn"
+                        }
+                      }
+                    },
+                    {
+                      "id": "3ie2r",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q11",
+                      "descendants": {
+                        "lyiw2": {
+                          "content": "A Beacon of Hope"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "X3EAS",
+              "name": "chapter3",
+              "width": "fill_container",
+              "stroke": {
+                "thickness": {
+                  "left": 3
+                },
+                "fill": "#1f293766"
+              },
+              "layout": "vertical",
+              "padding": [
+                0,
+                0,
+                0,
+                20
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8x6CQ",
+                  "name": "ch3H",
+                  "width": "fill_container",
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RaNo3",
+                      "name": "ch3T",
+                      "fill": "$text-dim",
+                      "content": "Chapter 3: Lor'themar's Gambit",
+                      "fontFamily": "Cinzel",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CbjMy",
+                      "name": "ch3S",
+                      "gap": 6,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "PDXTl",
+                          "name": "ch3I",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "lock",
+                          "iconFontFamily": "lucide",
+                          "fill": "$text-dim"
+                        },
+                        {
+                          "type": "text",
+                          "id": "YYvIS",
+                          "name": "ch3C",
+                          "fill": "$text-dim",
+                          "content": "0/12",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zqrDM",
+                  "name": "ch3Q",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    8,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "id": "hfJmV",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q12",
+                      "descendants": {
+                        "lyiw2": {
+                          "content": "The Regent Lord's Plan"
+                        }
+                      }
+                    },
+                    {
+                      "id": "qaMpi",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q13",
+                      "descendants": {
+                        "lyiw2": {
+                          "content": "Gathering the Quel'dorei"
+                        }
+                      }
+                    },
+                    {
+                      "id": "UL822",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q14",
+                      "descendants": {
+                        "lyiw2": {
+                          "content": "Dawnblade Defectors"
+                        }
+                      }
+                    },
+                    {
+                      "id": "XlhRT",
+                      "type": "ref",
+                      "ref": "MNRwL",
+                      "width": "fill_container",
+                      "name": "q15",
+                      "descendants": {
+                        "lyiw2": {
+                          "content": "Into the Ghostlands"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-deep": {
+      "type": "color",
+      "value": "#0a0b14"
+    },
+    "bg-elevated": {
+      "type": "color",
+      "value": "#1a1f35"
+    },
+    "bg-overlay": {
+      "type": "color",
+      "value": "#0a0b1499"
+    },
+    "bg-surface": {
+      "type": "color",
+      "value": "#111827"
+    },
+    "border-glow": {
+      "type": "color",
+      "value": "#7c3aed33"
+    },
+    "border-subtle": {
+      "type": "color",
+      "value": "#1f2937"
+    },
+    "crimson": {
+      "type": "color",
+      "value": "#dc2626"
+    },
+    "gold-dark": {
+      "type": "color",
+      "value": "#d4a843"
+    },
+    "gold-light": {
+      "type": "color",
+      "value": "#fbbf24"
+    },
+    "gold-mid": {
+      "type": "color",
+      "value": "#f59e0b"
+    },
+    "text-dim": {
+      "type": "color",
+      "value": "#6b7280"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#e8e0d4"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#9ca3af"
+    },
+    "void-dark": {
+      "type": "color",
+      "value": "#6b21a8"
+    },
+    "void-light": {
+      "type": "color",
+      "value": "#a855f7"
+    },
+    "void-mid": {
+      "type": "color",
+      "value": "#7c3aed"
+    },
+    "zone-eversong": {
+      "type": "color",
+      "value": "#c97b3a"
+    },
+    "zone-harandar": {
+      "type": "color",
+      "value": "#4ecdc4"
+    },
+    "zone-silvermoon": {
+      "type": "color",
+      "value": "#d4a843"
+    },
+    "zone-voidstorm": {
+      "type": "color",
+      "value": "#7c6bf0"
+    },
+    "zone-zulaman": {
+      "type": "color",
+      "value": "#2d8a6e"
+    }
+  }
+}
