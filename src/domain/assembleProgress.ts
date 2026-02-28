@@ -19,13 +19,13 @@ export function assembleProgress(
     achievements.achievements.map((a) => [a.id, a.completed]),
   )
 
-  // Map from achievement ID → Map of child criteria ID → completed
-  const criteriaMap = new Map<number, Map<number, boolean>>()
+  // Map from achievement ID → ordered array of child criteria completion
+  const criteriaMap = new Map<number, Array<{ id: number; completed: boolean }>>()
   for (const a of achievements.achievements) {
     if (a.criteria) {
       criteriaMap.set(
         a.id,
-        new Map(a.criteria.map((cc) => [cc.id, cc.completed])),
+        a.criteria.map((cc) => ({ id: cc.id, completed: cc.completed })),
       )
     }
   }
@@ -53,16 +53,17 @@ export function assembleProgress(
     achievementId: PATHFINDER_ACHIEVEMENT_ID,
     completed: achievementMap.get(PATHFINDER_ACHIEVEMENT_ID) ?? false,
     criteria: PATHFINDER_CRITERIA.map((c) => {
-      const childMap = criteriaMap.get(c.achievementId)
+      const parentCompleted = achievementMap.get(c.achievementId) ?? false
+      const childCriteria = criteriaMap.get(c.achievementId) ?? []
       return {
         achievementId: c.achievementId,
         name: c.name,
-        completed: achievementMap.get(c.achievementId) ?? false,
-        subCriteria: c.subCriteria.map((sc) => ({
+        completed: parentCompleted,
+        subCriteria: c.subCriteria.map((sc, i) => ({
           id: sc.id,
           name: sc.name,
           type: sc.type,
-          completed: childMap?.get(sc.id) ?? false,
+          completed: parentCompleted || (childCriteria[i]?.completed ?? false),
         })),
       }
     }),
