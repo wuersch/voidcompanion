@@ -24,7 +24,10 @@ export default function LandingPage({ onPrivacy }: { onPrivacy?: () => void }) {
       />
 
       {/* Centered content */}
-      <div className="relative flex min-h-dvh flex-col items-center justify-center px-6 py-15">
+      <div className="relative flex min-h-dvh flex-col items-center px-6">
+        {/* Push content to center */}
+        <div className="flex-1" />
+
         {/* Logo */}
         <img
           src={logoImage}
@@ -39,7 +42,6 @@ export default function LandingPage({ onPrivacy }: { onPrivacy?: () => void }) {
           LEVELING COMPANION
         </h1>
 
-        {/* Spacer */}
         <div className="h-10" />
 
         {/* Tagline */}
@@ -47,7 +49,6 @@ export default function LandingPage({ onPrivacy }: { onPrivacy?: () => void }) {
           Track your journey through Quel'Thalas
         </p>
 
-        {/* Spacer */}
         <div className="h-8" />
 
         {/* Login button — gold gradient matching Button/Primary component */}
@@ -63,7 +64,7 @@ export default function LandingPage({ onPrivacy }: { onPrivacy?: () => void }) {
         <div className="flex-1" />
 
         {/* Footer */}
-        <p className="text-xs text-text-dim">
+        <p className="pb-6 text-xs text-text-dim">
           A fan-made companion app. Not affiliated with Blizzard Entertainment.
           {onPrivacy && (
             <>
