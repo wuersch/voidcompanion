@@ -21,6 +21,7 @@ export default function CharacterDashboard({
 
   const [realmFilter, setRealmFilter] = useState<string | null>(null)
   const [sortKey, setSortKey] = useState<SortKey>('name')
+  const [searchQuery, setSearchQuery] = useState('')
 
   const characterIds = useMemo(
     () => characters.map((c) => c.id),
@@ -43,9 +44,16 @@ export default function CharacterDashboard({
   )
 
   const filtered = useMemo(() => {
-    let list = realmFilter
-      ? characters.filter((c) => c.realm === realmFilter)
+    const q = searchQuery.trim().toLowerCase()
+    let list = q
+      ? characters.filter(
+          (c) =>
+            c.name.toLowerCase().includes(q) ||
+            c.realm.toLowerCase().includes(q),
+        )
       : characters
+
+    list = realmFilter ? list.filter((c) => c.realm === realmFilter) : list
 
     list = [...list].sort((a, b) => {
       if (sortKey === 'level') return b.level - a.level
@@ -54,7 +62,7 @@ export default function CharacterDashboard({
     })
 
     return list
-  }, [characters, realmFilter, sortKey])
+  }, [characters, searchQuery, realmFilter, sortKey])
 
   return (
     <div className="relative min-h-dvh bg-bg-deep">
@@ -92,6 +100,8 @@ export default function CharacterDashboard({
                 onRealmChange={setRealmFilter}
                 sortKey={sortKey}
                 onSortChange={setSortKey}
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
               />
             </div>
           )}

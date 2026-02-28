@@ -13,15 +13,28 @@ export default function DashboardFilterBar({
   onRealmChange,
   sortKey,
   onSortChange,
+  searchQuery,
+  onSearchChange,
 }: {
   realms: string[]
   activeRealm: string | null
   onRealmChange: (realm: string | null) => void
   sortKey: SortKey
   onSortChange: (key: SortKey) => void
+  searchQuery: string
+  onSearchChange: (q: string) => void
 }) {
   return (
     <div className="flex flex-wrap items-center gap-3">
+      {/* Search input */}
+      <input
+        type="text"
+        placeholder="Search characters..."
+        value={searchQuery}
+        onChange={(e) => onSearchChange(e.target.value)}
+        className="w-full rounded-lg border border-border-subtle bg-bg-elevated px-3 py-1.5 font-body text-sm text-text-primary placeholder:text-text-dim outline-none focus:ring-2 focus:ring-gold/50 sm:w-64"
+      />
+
       {/* Realm pills */}
       <div className="flex flex-wrap gap-2">
         <button

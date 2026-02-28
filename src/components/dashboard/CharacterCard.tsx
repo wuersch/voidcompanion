@@ -10,21 +10,25 @@ function formatRealm(slug: string): string {
 }
 
 function campaignSummary(progress: CharacterProgress): string {
-  const done = progress.campaign.filter(
-    (z) => z.completedQuests === z.totalQuests,
-  ).length
-  return `${done}/${progress.campaign.length}`
+  const totalQuests = progress.campaign.reduce((sum, z) => sum + z.totalQuests, 0)
+  if (totalQuests === 0) return '0%'
+  const totalCompleted = progress.campaign.reduce((sum, z) => sum + z.completedQuests, 0)
+  return `${Math.round((totalCompleted / totalQuests) * 100)}%`
 }
 
 function pathfinderSummary(progress: CharacterProgress): string {
+  const total = progress.pathfinder.criteria.length
+  if (total === 0) return '0%'
   const done = progress.pathfinder.criteria.filter((c) => c.completed).length
-  return `${done}/${progress.pathfinder.criteria.length}`
+  return `${Math.round((done / total) * 100)}%`
 }
 
 function renownSummary(progress: CharacterProgress): string {
   if (progress.renown.length === 0) return '—'
-  const max = progress.renown.filter((f) => f.currentLevel >= f.maxLevel).length
-  return `${max}/${progress.renown.length}`
+  const avg =
+    progress.renown.reduce((sum, f) => sum + f.currentLevel / f.maxLevel, 0) /
+    progress.renown.length
+  return `${Math.round(avg * 100)}%`
 }
 
 export default function CharacterCard({
