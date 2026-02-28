@@ -1,4 +1,5 @@
 import type { Character, FactionRenown } from '../../domain/types'
+import { MIDNIGHT_FACTIONS } from '../../data/factions'
 import type { CharacterAchievementData } from '../../ports/api'
 import type {
   RawAccountProfile,
@@ -70,6 +71,8 @@ export function transformReputations(raw: RawReputations): FactionRenown[] {
       factionId: r.faction.id,
       factionName: r.faction.name,
       currentLevel: r.standing.renown_level!,
-      maxLevel: r.standing.max_renown_level ?? r.standing.renown_level!,
+      maxLevel: r.standing.max_renown_level
+        ?? MIDNIGHT_FACTIONS.get(r.faction.id)
+        ?? r.standing.renown_level!,
     }))
 }

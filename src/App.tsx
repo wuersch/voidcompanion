@@ -5,12 +5,14 @@ import CallbackHandler from './components/CallbackHandler'
 import CharacterDashboard from './components/dashboard/CharacterDashboard'
 import CharacterDetail from './components/detail/CharacterDetail'
 import ZoneDrillDown from './components/detail/ZoneDrillDown'
+import PathfinderDrillDown from './components/detail/PathfinderDrillDown'
 import type { Character, CharacterProgress } from './domain/types'
 
 type AppView =
   | { screen: 'dashboard' }
   | { screen: 'detail'; character: Character }
   | { screen: 'zone'; character: Character; zoneId: string; progress: CharacterProgress }
+  | { screen: 'pathfinder'; character: Character; achievementId: number; progress: CharacterProgress }
 
 export default function App() {
   const { isAuthenticated, isLoading, error } = useAuth()
@@ -28,7 +30,7 @@ export default function App() {
   useEffect(() => {
     function onPopState() {
       setView((prev) => {
-        if (prev.screen === 'zone')
+        if (prev.screen === 'zone' || prev.screen === 'pathfinder')
           return { screen: 'detail', character: prev.character }
         if (prev.screen === 'detail') return { screen: 'dashboard' }
         return prev
@@ -57,6 +59,20 @@ export default function App() {
         onSelectZone={(zoneId, progress) =>
           navigateForward({ screen: 'zone', character: view.character, zoneId, progress })
         }
+        onSelectPathfinder={(achievementId, progress) =>
+          navigateForward({ screen: 'pathfinder', character: view.character, achievementId, progress })
+        }
+      />
+    )
+  }
+
+  if (view.screen === 'pathfinder') {
+    return (
+      <PathfinderDrillDown
+        character={view.character}
+        achievementId={view.achievementId}
+        progress={view.progress}
+        onBack={goBack}
       />
     )
   }

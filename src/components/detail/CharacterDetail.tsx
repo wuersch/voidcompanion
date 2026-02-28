@@ -39,10 +39,12 @@ export default function CharacterDetail({
   character,
   onBack,
   onSelectZone,
+  onSelectPathfinder,
 }: {
   character: Character
   onBack: () => void
   onSelectZone: (zoneId: string, progress: CharacterProgress) => void
+  onSelectPathfinder: (achievementId: number, progress: CharacterProgress) => void
 }) {
   const { progress, isLoading, error } = useProgress(character)
 
@@ -76,7 +78,10 @@ export default function CharacterDetail({
             campaign={progress.campaign}
             onSelectZone={(zoneId) => onSelectZone(zoneId, progress)}
           />
-          <PathfinderSection pathfinder={progress.pathfinder} />
+          <PathfinderSection
+            pathfinder={progress.pathfinder}
+            onSelectCriterion={(achievementId) => onSelectPathfinder(achievementId, progress)}
+          />
           <RenownSection renown={progress.renown} />
         </div>
       ) : null}

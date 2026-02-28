@@ -7,7 +7,7 @@ import type {
 import type { CharacterAchievementData } from '../ports/api'
 import { ZONES } from '../data/zones'
 import { PATHFINDER_ACHIEVEMENT_ID, PATHFINDER_CRITERIA } from '../data/pathfinder'
-import { MIDNIGHT_FACTION_IDS } from '../data/factions'
+import { MIDNIGHT_FACTIONS } from '../data/factions'
 
 export function assembleProgress(
   achievements: CharacterAchievementData,
@@ -70,7 +70,7 @@ export function assembleProgress(
   }
 
   const renown = reputations.filter((r) =>
-    MIDNIGHT_FACTION_IDS.has(r.factionId),
+    MIDNIGHT_FACTIONS.has(r.factionId),
   )
 
   return { campaign, pathfinder, renown }

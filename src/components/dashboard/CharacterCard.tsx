@@ -79,18 +79,20 @@ export default function CharacterCard({
               className="inline-block h-2.5 w-2.5 rounded-full"
               style={{ backgroundColor: classColor }}
             />
-            <span className="text-sm text-text-dim">{character.className}</span>
+            <span className="text-sm text-text-dim">
+              {character.className}
+              {character.itemLevel > 0 && (
+                <span className="text-text-dim"> · {character.itemLevel} iLvl</span>
+              )}
+            </span>
           </div>
         </div>
 
         {/* Level badge */}
-        <div className="shrink-0 text-right">
+        <div className="shrink-0">
           <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold-dark">
             <span className="font-display text-sm font-bold text-gold">{character.level}</span>
           </div>
-          {character.itemLevel > 0 && (
-            <span className="font-mono text-xs text-text-dim">{character.itemLevel} iLvl</span>
-          )}
         </div>
       </div>
 
