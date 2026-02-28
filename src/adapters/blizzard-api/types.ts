@@ -42,3 +42,8 @@ export type RawReputations = {
     standing: { renown_level?: number; max_renown_level?: number }
   }>
 }
+
+export type RawCharacterSummary = {
+  equipped_item_level: number
+  active_spec?: { name: string }
+}

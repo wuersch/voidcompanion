@@ -80,8 +80,13 @@ export default function CharacterCard({
         </div>
 
         {/* Level badge */}
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-gold-dark">
-          <span className="font-display text-sm font-bold text-gold">{character.level}</span>
+        <div className="shrink-0 text-right">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold-dark">
+            <span className="font-display text-sm font-bold text-gold">{character.level}</span>
+          </div>
+          {character.itemLevel > 0 && (
+            <span className="font-mono text-xs text-text-dim">{character.itemLevel} iLvl</span>
+          )}
         </div>
       </div>
 

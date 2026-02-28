@@ -74,6 +74,14 @@ export default function DetailHeader({
             <span className="font-mono text-sm font-semibold text-gold">
               Level {character.level}
             </span>
+            {character.itemLevel > 0 && (
+              <>
+                <span className="text-text-dim">&middot;</span>
+                <span className="font-mono text-sm text-text-dim">
+                  {character.itemLevel} iLvl
+                </span>
+              </>
+            )}
             <span
               className="inline-block h-1.5 w-1.5 rounded-full"
               style={{ backgroundColor: classColor }}
