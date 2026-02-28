@@ -1,12 +1,12 @@
 import type { FactionRenown } from '../../domain/types'
 import ProgressBar from '../shared/ProgressBar'
 
-// Map specific faction names to zone accent colors; default to gold
+// Map Midnight faction names to zone accent colors; default to gold
 const FACTION_COLORS: Record<string, string> = {
-  'Sunwell Reclamation': 'var(--color-gold)',
-  'Amani Coalition': 'var(--color-zone-zulaman)',
-  'Haranir Dreamweavers': 'var(--color-zone-harandar)',
-  'Army of the Light': 'var(--color-void-light)',
+  'Silvermoon Court': 'var(--color-zone-silvermoon)',
+  'Amani Tribe': 'var(--color-zone-zulaman)',
+  "Hara'ti": 'var(--color-zone-harandar)',
+  'The Singularity': 'var(--color-zone-voidstorm)',
 }
 
 export default function RenownRow({ faction }: { faction: FactionRenown }) {

@@ -7,6 +7,7 @@ import type {
 import type { CharacterAchievementData } from '../ports/api'
 import { ZONES } from '../data/zones'
 import { PATHFINDER_ACHIEVEMENT_ID, PATHFINDER_CRITERIA } from '../data/pathfinder'
+import { MIDNIGHT_FACTION_IDS } from '../data/factions'
 
 export function assembleProgress(
   achievements: CharacterAchievementData,
@@ -17,6 +18,17 @@ export function assembleProgress(
   const achievementMap = new Map(
     achievements.achievements.map((a) => [a.id, a.completed]),
   )
+
+  // Map from achievement ID → Map of child criteria ID → completed
+  const criteriaMap = new Map<number, Map<number, boolean>>()
+  for (const a of achievements.achievements) {
+    if (a.criteria) {
+      criteriaMap.set(
+        a.id,
+        new Map(a.criteria.map((cc) => [cc.id, cc.completed])),
+      )
+    }
+  }
 
   const campaign: CampaignZone[] = ZONES.map((zone) => {
     const quests = zone.chapters.flatMap((chapter) =>
@@ -40,12 +52,25 @@ export function assembleProgress(
   const pathfinder: PathfinderProgress = {
     achievementId: PATHFINDER_ACHIEVEMENT_ID,
     completed: achievementMap.get(PATHFINDER_ACHIEVEMENT_ID) ?? false,
-    criteria: PATHFINDER_CRITERIA.map((c) => ({
-      achievementId: c.achievementId,
-      name: c.name,
-      completed: achievementMap.get(c.achievementId) ?? false,
-    })),
+    criteria: PATHFINDER_CRITERIA.map((c) => {
+      const childMap = criteriaMap.get(c.achievementId)
+      return {
+        achievementId: c.achievementId,
+        name: c.name,
+        completed: achievementMap.get(c.achievementId) ?? false,
+        subCriteria: c.subCriteria.map((sc) => ({
+          id: sc.id,
+          name: sc.name,
+          type: sc.type,
+          completed: childMap?.get(sc.id) ?? false,
+        })),
+      }
+    }),
   }
 
-  return { campaign, pathfinder, renown: reputations }
+  const renown = reputations.filter((r) =>
+    MIDNIGHT_FACTION_IDS.has(r.factionId),
+  )
+
+  return { campaign, pathfinder, renown }
 }
