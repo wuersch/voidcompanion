@@ -1,7 +1,9 @@
+import { useAuth } from '../hooks/useAuth'
 import bgImage from '../../assets/key-art-against-the-void.jpg'
 import logoImage from '../../assets/wow-midnight-logo.png'
 
 export default function LandingPage() {
+  const { login } = useAuth()
   return (
     <div className="relative min-h-dvh overflow-hidden bg-bg-deep">
       {/* Background key art */}
@@ -51,6 +53,7 @@ export default function LandingPage() {
         {/* Login button — gold gradient matching Button/Primary component */}
         <button
           type="button"
+          onClick={login}
           className="cursor-pointer rounded-xl bg-linear-to-b from-gold to-gold-dark px-6 py-3 font-body text-base font-semibold text-bg-deep transition-all duration-200 hover:brightness-110 active:brightness-95"
         >
           Login with Battle.net
