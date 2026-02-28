@@ -74,6 +74,15 @@ src/
 ├── main.tsx           # React entry point
 ├── App.tsx            # App shell
 ├── vite-env.d.ts      # Vite type declarations
+├── domain/
+│   └── types.ts       # Domain model (Character, Quest, SyncState, etc.)
+├── ports/
+│   ├── api.ts         # ApiPort interface (Blizzard API contract)
+│   ├── auth.ts        # AuthPort interface (OAuth contract)
+│   ├── storage.ts     # StoragePort interface (persistence contract)
+│   ├── PortsContext.ts # React context for dependency injection
+│   ├── context.tsx    # PortsProvider component
+│   └── usePorts.ts    # usePorts() hook
 └── components/
     └── LandingPage.tsx # Landing/auth screen
 ```
@@ -84,9 +93,9 @@ src/
 - [x] **Project scaffolding**: Vite + React + TypeScript + Tailwind v4
 - [x] **Design system extraction**: All tokens from .pen → Tailwind theme
 - [x] **Landing page shell**: Background key art, gradient overlay, logo, CTA button, footer
+- [x] **Ports & adapters architecture**: Domain types + port interfaces (ApiPort, AuthPort, StoragePort) + React Context DI
 
 ### Next Up (PRD Phase 1 continued)
-- [ ] **Ports & adapters architecture**: Define port interfaces for API, storage, and auth
 - [ ] **Blizzard OAuth PKCE**: Client-side auth flow with Battle.net
 - [ ] **Storage abstraction + IndexedDB adapter**: Dexie.js behind a port interface
 - [ ] **Basic character list**: Fetch account characters from Blizzard API
