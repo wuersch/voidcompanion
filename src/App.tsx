@@ -3,6 +3,7 @@ import { useAuth } from './hooks/useAuth'
 import LandingPage from './components/LandingPage'
 import CallbackHandler from './components/CallbackHandler'
 import CharacterDashboard from './components/dashboard/CharacterDashboard'
+import PrivacyPolicy from './components/PrivacyPolicy'
 import CharacterDetail from './components/detail/CharacterDetail'
 import ZoneDrillDown from './components/detail/ZoneDrillDown'
 import PathfinderDrillDown from './components/detail/PathfinderDrillDown'
@@ -13,6 +14,7 @@ type AppView =
   | { screen: 'detail'; character: Character }
   | { screen: 'zone'; character: Character; zoneId: string; progress: CharacterProgress }
   | { screen: 'pathfinder'; character: Character; achievementId: number; progress: CharacterProgress }
+  | { screen: 'privacy' }
 
 export default function App() {
   const { isAuthenticated, isLoading, error } = useAuth()
@@ -32,7 +34,8 @@ export default function App() {
       setView((prev) => {
         if (prev.screen === 'zone' || prev.screen === 'pathfinder')
           return { screen: 'detail', character: prev.character }
-        if (prev.screen === 'detail') return { screen: 'dashboard' }
+        if (prev.screen === 'detail' || prev.screen === 'privacy')
+          return { screen: 'dashboard' }
         return prev
       })
     }
@@ -47,8 +50,17 @@ export default function App() {
     return <CallbackHandler error={error} />
   }
 
+  const navigatePrivacy = useCallback(
+    () => navigateForward({ screen: 'privacy' }),
+    [navigateForward],
+  )
+
+  if (view.screen === 'privacy') {
+    return <PrivacyPolicy onBack={goBack} />
+  }
+
   if (!isAuthenticated) {
-    return <LandingPage />
+    return <LandingPage onPrivacy={navigatePrivacy} />
   }
 
   if (view.screen === 'detail') {
@@ -91,6 +103,7 @@ export default function App() {
   return (
     <CharacterDashboard
       onSelectCharacter={(c) => navigateForward({ screen: 'detail', character: c })}
+      onPrivacy={navigatePrivacy}
     />
   )
 }

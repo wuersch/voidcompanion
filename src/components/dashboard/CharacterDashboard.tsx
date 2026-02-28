@@ -12,8 +12,10 @@ import bgImage from '../../../assets/key-art-against-the-void.jpg'
 
 export default function CharacterDashboard({
   onSelectCharacter,
+  onPrivacy,
 }: {
   onSelectCharacter: (character: Character) => void
+  onPrivacy: () => void
 }) {
   const { logout } = useAuth()
   const { characters, isLoading, setCharacters } = useCharacters()
@@ -114,6 +116,19 @@ export default function CharacterDashboard({
             onSelect={onSelectCharacter}
           />
         </main>
+
+        {/* Footer */}
+        <footer className="px-6 py-4 text-center text-xs text-text-dim">
+          A fan-made companion app. Not affiliated with Blizzard Entertainment.
+          {' · '}
+          <button
+            type="button"
+            onClick={onPrivacy}
+            className="cursor-pointer bg-transparent text-text-dim underline transition-colors hover:text-gold"
+          >
+            Privacy
+          </button>
+        </footer>
       </div>
     </div>
   )

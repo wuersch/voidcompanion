@@ -2,7 +2,7 @@ import { useAuth } from '../hooks/useAuth'
 import bgImage from '../../assets/key-art-against-the-void.jpg'
 import logoImage from '../../assets/wow-midnight-logo.png'
 
-export default function LandingPage() {
+export default function LandingPage({ onPrivacy }: { onPrivacy?: () => void }) {
   const { login } = useAuth()
   return (
     <div className="relative min-h-dvh overflow-hidden bg-bg-deep">
@@ -65,6 +65,18 @@ export default function LandingPage() {
         {/* Footer */}
         <p className="text-xs text-text-dim">
           A fan-made companion app. Not affiliated with Blizzard Entertainment.
+          {onPrivacy && (
+            <>
+              {' · '}
+              <button
+                type="button"
+                onClick={onPrivacy}
+                className="cursor-pointer bg-transparent text-text-dim underline transition-colors hover:text-gold"
+              >
+                Privacy
+              </button>
+            </>
+          )}
         </p>
       </div>
     </div>
