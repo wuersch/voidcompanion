@@ -1,7 +1,7 @@
 import { useAuth } from './hooks/useAuth'
 import LandingPage from './components/LandingPage'
 import CallbackHandler from './components/CallbackHandler'
-import AuthenticatedShell from './components/AuthenticatedShell'
+import CharacterDashboard from './components/dashboard/CharacterDashboard'
 
 export default function App() {
   const { isAuthenticated, isLoading, error } = useAuth()
@@ -13,7 +13,7 @@ export default function App() {
   }
 
   if (isAuthenticated) {
-    return <AuthenticatedShell />
+    return <CharacterDashboard />
   }
 
   return <LandingPage />

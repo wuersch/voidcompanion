@@ -4,12 +4,15 @@ import './index.css'
 import App from './App'
 import { PortsProvider } from './ports/context'
 import { BlizzardAuthAdapter } from './adapters/blizzard-auth/BlizzardAuthAdapter'
+import { BlizzardApiAdapter } from './adapters/blizzard-api/BlizzardApiAdapter'
+import { DexieStorageAdapter } from './adapters/dexie-storage/DexieStorageAdapter'
+import { OAUTH_CONFIG } from './adapters/blizzard-auth/config'
 import type { Ports } from './ports/PortsContext'
 
 const ports: Ports = {
   auth: new BlizzardAuthAdapter(),
-  api: null as unknown as Ports['api'],
-  storage: null as unknown as Ports['storage'],
+  api: new BlizzardApiAdapter(OAUTH_CONFIG.region),
+  storage: new DexieStorageAdapter(),
 }
 
 createRoot(document.getElementById('root')!).render(

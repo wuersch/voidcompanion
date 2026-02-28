@@ -18,8 +18,8 @@ A WoW: Midnight expansion leveling & progress tracker for a small friends-and-fa
 - React 19 + Vite 7 + TypeScript 5.9
 - Tailwind CSS v4 (CSS-based theme config in `src/index.css`)
 - Google Fonts: Cinzel (display), Source Sans 3 (body), JetBrains Mono (mono)
-- Blizzard OAuth 2.0 (PKCE, client-side only) — not yet implemented
-- IndexedDB (via Dexie.js) for local persistence — not yet implemented
+- Blizzard OAuth 2.0 (authorization code flow, client secret in SPA, EU default)
+- IndexedDB (via Dexie.js) for local persistence
 - GitHub Pages hosting — not yet configured
 
 ## Design System
@@ -84,16 +84,32 @@ src/
 │   ├── context.tsx    # PortsProvider component
 │   └── usePorts.ts    # usePorts() hook
 ├── adapters/
-│   └── blizzard-auth/
-│       ├── config.ts              # OAuth constants from VITE_ env vars
-│       ├── session.ts             # sessionStorage wrappers (token + CSRF state)
-│       └── BlizzardAuthAdapter.ts # AuthPort implementation
+│   ├── blizzard-auth/
+│   │   ├── config.ts              # OAuth constants from VITE_ env vars
+│   │   ├── session.ts             # sessionStorage wrappers (token + CSRF state)
+│   │   └── BlizzardAuthAdapter.ts # AuthPort implementation
+│   ├── blizzard-api/
+│   │   ├── types.ts               # Raw Blizzard API response types
+│   │   ├── transforms.ts          # Raw → domain type transformers
+│   │   └── BlizzardApiAdapter.ts  # ApiPort implementation
+│   └── dexie-storage/
+│       └── DexieStorageAdapter.ts # StoragePort implementation (IndexedDB)
+├── data/
+│   └── classColors.ts # WoW class ID → hex color mapping
 ├── hooks/
-│   └── useAuth.ts     # Auth state hook (isAuthenticated, login, logout)
+│   ├── useAuth.ts       # Auth state hook (isAuthenticated, login, logout)
+│   ├── useCharacters.ts # Load characters from storage on mount
+│   └── useSync.ts       # Sync characters from Blizzard API → storage
 └── components/
-    ├── LandingPage.tsx        # Landing/auth screen
-    ├── CallbackHandler.tsx    # OAuth callback loading/error screen
-    └── AuthenticatedShell.tsx # Post-auth placeholder
+    ├── LandingPage.tsx      # Landing/auth screen
+    ├── CallbackHandler.tsx  # OAuth callback loading/error screen
+    └── dashboard/
+        ├── CharacterDashboard.tsx  # Main dashboard orchestrator
+        ├── DashboardTopBar.tsx     # Logo, sync button, logout
+        ├── DashboardFilterBar.tsx  # Realm pills + sort dropdown
+        ├── CharacterGrid.tsx       # Responsive card grid + skeletons + empty state
+        ├── CharacterCard.tsx       # Character card with avatar, info, stat badges
+        └── StatBadge.tsx           # Small label + value badge
 ```
 
 ## Development Progress
@@ -104,8 +120,9 @@ src/
 - [x] **Landing page shell**: Background key art, gradient overlay, logo, CTA button, footer
 - [x] **Ports & adapters architecture**: Domain types + port interfaces (ApiPort, AuthPort, StoragePort) + React Context DI
 - [x] **Blizzard OAuth**: Authorization code flow with Battle.net (client secret in SPA, sessionStorage token, EU default)
+- [x] **IndexedDB storage adapter**: Dexie.js behind StoragePort (characters, progress, syncState tables)
+- [x] **Blizzard API adapter**: ApiPort implementation with profile/media/achievements/quests/reputations endpoints
+- [x] **Character dashboard**: Top bar, realm filter/sort, responsive character card grid, sync flow, skeleton loading
 
 ### Next Up (PRD Phase 1 continued)
-- [ ] **Storage abstraction + IndexedDB adapter**: Dexie.js behind a port interface
-- [ ] **Basic character list**: Fetch account characters from Blizzard API
 - [ ] **GitHub Pages deployment**: CI/CD pipeline
