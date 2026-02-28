@@ -2,3 +2,8 @@
 node_modules/
 .env*
 dist/
+
+# Blizzard press kit assets (large binaries, see design/assets/LICENSE.md)
+design/assets/MidnightPreExpansionUpdate120/
+design/assets/WorldofWarcraftMidnightgamescomReveal/
+design/assets/WorldofWarcraftMidnightLaunch/
