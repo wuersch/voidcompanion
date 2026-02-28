@@ -1,13 +1,7 @@
 import type { Character, CharacterProgress } from '../../domain/types'
 import { CLASS_COLORS } from '../../data/classColors'
+import { formatRealm } from '../../utils/format'
 import StatBadge from './StatBadge'
-
-function formatRealm(slug: string): string {
-  return slug
-    .split('-')
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ')
-}
 
 function campaignSummary(progress: CharacterProgress): string {
   const totalQuests = progress.campaign.reduce((sum, z) => sum + z.totalQuests, 0)

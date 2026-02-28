@@ -1,9 +1,4 @@
-function formatRealm(slug: string): string {
-  return slug
-    .split('-')
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ')
-}
+import { formatRealm } from '../../utils/format'
 
 export type SortKey = 'name' | 'level' | 'realm'
 

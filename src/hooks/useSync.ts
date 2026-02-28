@@ -1,12 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { usePorts } from '../ports/usePorts'
 import type { Character, SyncState } from '../domain/types'
-
-const DEFAULT_SYNC_STATE: SyncState = {
-  lastSyncTimestamp: null,
-  isSyncing: false,
-  error: null,
-}
+import { DEFAULT_SYNC_STATE, SESSION_EXPIRED_MSG } from '../domain/types'
 
 export function useSync() {
   const { api, auth, storage } = usePorts()
@@ -19,7 +14,7 @@ export function useSync() {
   const sync = useCallback(async (): Promise<Character[]> => {
     const token = auth.getAccessToken()
     if (!token) {
-      throw new Error('Session expired — please log in again')
+      throw new Error(SESSION_EXPIRED_MSG)
     }
 
     const syncing: SyncState = { lastSyncTimestamp: syncState.lastSyncTimestamp, isSyncing: true, error: null }

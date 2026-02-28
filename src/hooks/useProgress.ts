@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { usePorts } from '../ports/usePorts'
 import { assembleProgress } from '../domain/assembleProgress'
 import type { Character, CharacterProgress } from '../domain/types'
+import { SESSION_EXPIRED_MSG } from '../domain/types'
 
 type ProgressState = {
   progress: CharacterProgress | null
@@ -17,7 +18,7 @@ export function useProgress(character: Character) {
   const [state, setState] = useState<ProgressState>(() => ({
     progress: null,
     isLoading: !!token,
-    error: token ? null : 'Session expired — please log in again',
+    error: token ? null : SESSION_EXPIRED_MSG,
   }))
 
   useEffect(() => {

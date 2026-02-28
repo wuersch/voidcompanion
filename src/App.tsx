@@ -46,14 +46,14 @@ export default function App() {
   // Back navigation via on-screen buttons: use browser history
   const goBack = useCallback(() => history.back(), [])
 
-  if (isCallback || isLoading) {
-    return <CallbackHandler error={error} />
-  }
-
   const navigatePrivacy = useCallback(
     () => navigateForward({ screen: 'privacy' }),
     [navigateForward],
   )
+
+  if (isCallback || isLoading) {
+    return <CallbackHandler error={error} />
+  }
 
   if (view.screen === 'privacy') {
     return <PrivacyPolicy onBack={goBack} />

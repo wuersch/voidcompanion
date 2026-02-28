@@ -1,5 +1,6 @@
 import Dexie from 'dexie'
 import type { Character, CharacterProgress, SyncState } from '../../domain/types'
+import { DEFAULT_SYNC_STATE } from '../../domain/types'
 import type { StoragePort } from '../../ports/storage'
 
 const db = new Dexie('MidnightCompanion') as Dexie & {
@@ -13,12 +14,6 @@ db.version(1).stores({
   characterProgress: 'characterId',
   syncState: 'key',
 })
-
-const DEFAULT_SYNC_STATE: SyncState = {
-  lastSyncTimestamp: null,
-  isSyncing: false,
-  error: null,
-}
 
 export class DexieStorageAdapter implements StoragePort {
   async getCharacters(): Promise<Character[]> {

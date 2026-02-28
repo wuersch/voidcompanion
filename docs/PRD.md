@@ -23,7 +23,7 @@ A client-side web application that tracks World of Warcraft: Midnight expansion 
 ## Architecture & Technical Decisions
 
 ### Hosting
-- **GitHub Pages** on a custom subdomain (e.g., `mlc.omnom.ch` or similar)
+- **Azure Static Web Apps** (client ID/secret as env vars)
 - Static site, no server-side component
 - Zero hosting cost
 
@@ -368,46 +368,9 @@ The visual identity draws from the Midnight expansion's core tension: the golden
 
 ---
 
-## File Structure (Proposed)
+## File Structure
 
-```
-src/
-├── adapters/
-│   ├── blizzard-api/          # Blizzard API client implementation
-│   │   ├── auth.ts            # OAuth PKCE flow
-│   │   ├── client.ts          # API call methods
-│   │   └── transforms.ts      # API response → domain model
-│   ├── storage/
-│   │   └── indexeddb.ts       # Dexie-based storage adapter
-│   └── wowhead/
-│       └── tooltips.ts        # Wowhead script loader & link helpers
-├── ports/
-│   ├── api.ts                 # API port interface
-│   ├── storage.ts             # Storage port interface
-│   └── auth.ts                # Auth port interface
-├── domain/
-│   ├── types.ts               # Core domain types (Character, Quest, etc.)
-│   └── quest-data/            # Static curated quest chain JSON files
-│       ├── eversong-woods.json
-│       ├── zulaman.json
-│       ├── harandar.json
-│       ├── voidstorm.json
-│       └── arators-journey.json
-├── hooks/
-│   ├── useAuth.ts
-│   ├── useCharacters.ts
-│   ├── useSync.ts
-│   └── useProgress.ts
-├── components/
-│   ├── layout/
-│   ├── characters/
-│   ├── progress/
-│   └── common/
-├── styles/
-│   └── theme.css              # CSS variables, custom properties
-├── App.tsx
-└── main.tsx
-```
+See `CLAUDE.md` for the current, authoritative project structure.
 
 ---
 
@@ -418,7 +381,7 @@ src/
 - Blizzard OAuth authorization code flow
 - Storage abstraction + IndexedDB adapter
 - Basic character list from API
-- Deploy to GitHub Pages
+- Deploy to Azure Static Web Apps
 
 ### Phase 2: Design & UI
 - Design screens in Pencil.dev using Midnight press kit assets

@@ -4,22 +4,15 @@ A client-side web app that tracks World of Warcraft: Midnight expansion leveling
 
 ## Status
 
-**Design phase** — screens and design system are complete, implementation has not started.
-
-## Project Structure
-
-```
-docs/           Product requirements (PRD)
-design/         Pencil design file and press kit assets
-```
+**Functionally complete** — all screens implemented, pending Azure Static Web Apps deployment.
 
 ## Tech Stack
 
-- React, Vite, TypeScript
-- Tailwind CSS with custom theme
-- Blizzard OAuth 2.0 (PKCE)
-- IndexedDB for client-side persistence
-- GitHub Pages
+- React 19 + Vite 7 + TypeScript 5.9
+- Tailwind CSS v4 with custom theme
+- Blizzard OAuth 2.0 (authorization code flow, client secret in SPA)
+- IndexedDB (via Dexie.js) for client-side persistence
+- Azure Static Web Apps
 
 ## Disclaimer
 

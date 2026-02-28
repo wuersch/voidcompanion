@@ -20,7 +20,7 @@ A WoW: Midnight expansion leveling & progress tracker for a small friends-and-fa
 - Google Fonts: Cinzel (display), Source Sans 3 (body), JetBrains Mono (mono)
 - Blizzard OAuth 2.0 (authorization code flow, client secret in SPA, EU default)
 - IndexedDB (via Dexie.js) for local persistence
-- GitHub Pages hosting — not yet configured
+- Azure Static Web Apps hosting (client ID/secret as env vars)
 
 ## Design System
 
@@ -102,6 +102,8 @@ src/
 │   ├── factions.ts    # Midnight faction ID allowlist (4 factions)
 │   ├── pathfinder.ts  # Pathfinder achievement ID + 6 criteria with sub-criteria definitions
 │   └── zones.ts       # Static curated zone/chapter/quest data (210 quests from Wowhead)
+├── utils/
+│   └── format.ts      # Shared helpers: relativeTime, formatRealm, completionPercent
 ├── hooks/
 │   ├── useAuth.ts           # Auth state hook (isAuthenticated, login, logout)
 │   ├── useCharacters.ts     # Load characters from storage on mount
@@ -111,8 +113,10 @@ src/
 └── components/
     ├── LandingPage.tsx      # Landing/auth screen
     ├── CallbackHandler.tsx  # OAuth callback loading/error screen
+    ├── PrivacyPolicy.tsx    # Privacy policy page (linked from landing page footer)
     ├── shared/
-    │   ├── Icons.tsx        # Inline Lucide SVG icons (ArrowLeft, Circle, CircleCheck, etc.)
+    │   ├── DrillDownHeader.tsx # Shared full-bleed key art header with gradient overlay
+    │   ├── Icons.tsx        # Inline Lucide SVG icons (ArrowLeft, ChevronLeft, ChevronRight, ChevronDown, Circle, CircleCheck, Loader)
     │   ├── ProgressBar.tsx  # Horizontal fill bar with configurable color/height
     │   ├── SectionHeader.tsx # Uppercase Cinzel label with gold underline
     │   └── WowheadLink.tsx  # <a> linking to Wowhead with tooltip support
@@ -128,8 +132,9 @@ src/
         ├── DetailHeader.tsx         # Key art bg + avatar + hero info + back arrow
         ├── CampaignSection.tsx      # Section header + ZoneRow list
         ├── ZoneRow.tsx              # Zone thumbnail + progress bar + chapter count
-        ├── PathfinderSection.tsx     # 3-col grid of achievement criteria
-        ├── AchievementCriterion.tsx  # Circle/check icon + criterion name
+        ├── PathfinderSection.tsx     # Responsive grid of clickable achievement criteria (1-2-3 col)
+        ├── AchievementCriterion.tsx  # Clickable criterion row: icon + name + progress badge + chevron
+        ├── PathfinderDrillDown.tsx   # Pathfinder criterion drill-down (zone quests or exploration sub-criteria)
         ├── RenownSection.tsx        # Faction renown bars
         ├── RenownRow.tsx            # Faction name + progress bar + level count
         ├── ZoneDrillDown.tsx        # Zone quest view orchestrator
@@ -162,4 +167,4 @@ src/
 - [x] **Pathfinder sub-criteria**: Expandable criteria with completion badges and indented sub-items
 
 ### Next Up
-- [ ] **GitHub Pages deployment**: CI/CD pipeline
+- [ ] **Azure Static Web Apps deployment**: CI/CD pipeline

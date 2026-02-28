@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import type { Character, CharacterProgress, PathfinderCriterion } from '../../domain/types'
 import { PATHFINDER_CRITERIA } from '../../data/pathfinder'
 import { ZONES } from '../../data/zones'
+import { completionPercent } from '../../utils/format'
 import { refreshWowheadTooltips } from '../../adapters/wowhead/tooltips'
 import { ChevronLeft, Circle, CircleCheck } from '../shared/Icons'
+import DrillDownHeader from '../shared/DrillDownHeader'
 import ProgressBar from '../shared/ProgressBar'
 import WowheadLink from '../shared/WowheadLink'
 import ChapterGroup from './ChapterGroup'
@@ -41,53 +43,42 @@ export default function PathfinderDrillDown({
   const requiredQuests = isQuestline ? campaignZone!.quests.filter((q) => !q.factionAlternative) : []
   const completedCount = isQuestline ? requiredQuests.filter((q) => q.completed).length : criterion.subCriteria.filter((sc) => sc.completed).length
   const totalCount = isQuestline ? requiredQuests.length : criterion.subCriteria.length
-  const percent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0
+  const percent = completionPercent(completedCount, totalCount)
   const progressLabel = isQuestline ? 'Quests' : 'Criteria'
 
   return (
     <div className="min-h-dvh bg-bg-deep">
-      {/* Header */}
-      <header className="relative h-[200px] overflow-hidden">
-        <img
-          src={headerImage}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg-deep/[0.73] to-bg-deep/[0.93]" />
+      <DrillDownHeader image={headerImage}>
+        <button
+          type="button"
+          onClick={onBack}
+          className="flex cursor-pointer items-center gap-2 text-text-secondary transition-colors hover:text-text-primary"
+        >
+          <ChevronLeft size={16} />
+          <span className="text-sm">Back to {character.name}</span>
+        </button>
 
-        <div className="relative flex h-full flex-col justify-end gap-2.5 px-6 py-8 sm:px-10">
-          <button
-            type="button"
-            onClick={onBack}
-            className="flex cursor-pointer items-center gap-2 text-text-secondary transition-colors hover:text-text-primary"
-          >
-            <ChevronLeft size={16} />
-            <span className="text-sm">Back to {character.name}</span>
-          </button>
+        <h1 className="font-display text-2xl font-bold text-text-primary sm:text-[32px]">
+          {criterion.name}
+        </h1>
 
-          <h1 className="font-display text-2xl font-bold text-text-primary sm:text-[32px]">
-            {criterion.name}
-          </h1>
+        <WowheadLink
+          type="achievement"
+          id={achievementId}
+          className="text-base text-gold-dark hover:text-gold"
+        >
+          View on Wowhead
+        </WowheadLink>
 
-          <WowheadLink
-            type="achievement"
-            id={achievementId}
-            className="text-base text-gold-dark hover:text-gold"
-          >
-            View on Wowhead
-          </WowheadLink>
-
-          <div className="flex items-center gap-4">
-            <span className="font-mono text-[13px] font-semibold text-text-secondary">
-              {completedCount} / {totalCount} {progressLabel}
-            </span>
-            <div className="w-[300px] max-w-full">
-              <ProgressBar percent={percent} fillColor={headerColor} height={10} />
-            </div>
+        <div className="flex items-center gap-4">
+          <span className="font-mono text-[13px] font-semibold text-text-secondary">
+            {completedCount} / {totalCount} {progressLabel}
+          </span>
+          <div className="w-[300px] max-w-full">
+            <ProgressBar percent={percent} fillColor={headerColor} height={10} />
           </div>
         </div>
-      </header>
+      </DrillDownHeader>
 
       {/* Content */}
       <div className="space-y-6 px-6 py-8 sm:px-10">

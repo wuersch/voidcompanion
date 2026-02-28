@@ -34,6 +34,10 @@ export class BlizzardApiAdapter implements ApiPort {
     this.namespace = `profile-${region}`
   }
 
+  private characterPath(realm: string, name: string): string {
+    return `/profile/wow/character/${realm}/${encodeURIComponent(name.toLowerCase())}`
+  }
+
   private async apiFetch<T>(path: string, token: string): Promise<T> {
     const separator = path.includes('?') ? '&' : '?'
     const url = `${this.host}${path}${separator}namespace=${this.namespace}&locale=en_US`
@@ -58,7 +62,7 @@ export class BlizzardApiAdapter implements ApiPort {
       Promise.allSettled(
         characters.map((c) =>
           this.apiFetch<RawCharacterMedia>(
-            `/profile/wow/character/${c.realm}/${encodeURIComponent(c.name.toLowerCase())}/character-media`,
+            `${this.characterPath(c.realm, c.name)}/character-media`,
             token,
           ),
         ),
@@ -66,7 +70,7 @@ export class BlizzardApiAdapter implements ApiPort {
       Promise.allSettled(
         characters.map((c) =>
           this.apiFetch<RawCharacterSummary>(
-            `/profile/wow/character/${c.realm}/${encodeURIComponent(c.name.toLowerCase())}`,
+            this.characterPath(c.realm, c.name),
             token,
           ),
         ),
@@ -94,7 +98,7 @@ export class BlizzardApiAdapter implements ApiPort {
     name: string,
   ): Promise<{ avatarUrl: string }> {
     const raw = await this.apiFetch<RawCharacterMedia>(
-      `/profile/wow/character/${realm}/${encodeURIComponent(name.toLowerCase())}/character-media`,
+      `${this.characterPath(realm, name)}/character-media`,
       token,
     )
     return { avatarUrl: extractAvatarUrl(raw) }
@@ -106,7 +110,7 @@ export class BlizzardApiAdapter implements ApiPort {
     name: string,
   ): Promise<CharacterAchievementData> {
     const raw = await this.apiFetch<RawAchievements>(
-      `/profile/wow/character/${realm}/${encodeURIComponent(name.toLowerCase())}/achievements`,
+      `${this.characterPath(realm, name)}/achievements`,
       token,
     )
     return transformAchievements(raw)
@@ -118,7 +122,7 @@ export class BlizzardApiAdapter implements ApiPort {
     name: string,
   ): Promise<number[]> {
     const raw = await this.apiFetch<RawCompletedQuests>(
-      `/profile/wow/character/${realm}/${encodeURIComponent(name.toLowerCase())}/quests/completed`,
+      `${this.characterPath(realm, name)}/quests/completed`,
       token,
     )
     return transformCompletedQuests(raw)
@@ -130,7 +134,7 @@ export class BlizzardApiAdapter implements ApiPort {
     name: string,
   ): Promise<FactionRenown[]> {
     const raw = await this.apiFetch<RawReputations>(
-      `/profile/wow/character/${realm}/${encodeURIComponent(name.toLowerCase())}/reputations`,
+      `${this.characterPath(realm, name)}/reputations`,
       token,
     )
     return transformReputations(raw)
@@ -142,7 +146,7 @@ export class BlizzardApiAdapter implements ApiPort {
     characterName: string,
   ): Promise<{ itemLevel: number; specName: string }> {
     const raw = await this.apiFetch<RawCharacterSummary>(
-      `/profile/wow/character/${realmSlug}/${encodeURIComponent(characterName.toLowerCase())}`,
+      this.characterPath(realmSlug, characterName),
       token,
     )
     return { itemLevel: extractItemLevel(raw), specName: extractSpecName(raw) }

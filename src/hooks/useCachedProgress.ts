@@ -14,18 +14,22 @@ export function useCachedProgress(characterIds: string[]) {
 
   useEffect(() => {
     if (characterIds.length === 0) return
+    let cancelled = false
 
     Promise.all(
       characterIds.map((id) =>
         storage.getProgress(id).then((p) => [id, p] as const),
       ),
     ).then((results) => {
+      if (cancelled) return
       const map = new Map<string, CharacterProgress>()
       for (const [id, progress] of results) {
         if (progress) map.set(id, progress)
       }
       setProgressMap(map)
     })
+
+    return () => { cancelled = true }
   }, [characterIds, storage])
 
   return progressMap

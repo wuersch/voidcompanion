@@ -70,3 +70,11 @@ export type SyncState = {
   isSyncing: boolean
   error: string | null
 }
+
+export const DEFAULT_SYNC_STATE: SyncState = {
+  lastSyncTimestamp: null,
+  isSyncing: false,
+  error: null,
+}
+
+export const SESSION_EXPIRED_MSG = 'Session expired — please log in again'

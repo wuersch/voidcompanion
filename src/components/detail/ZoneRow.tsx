@@ -1,5 +1,6 @@
 import type { CampaignZone } from '../../domain/types'
 import type { ZoneDef } from '../../data/zones'
+import { completionPercent } from '../../utils/format'
 import ProgressBar from '../shared/ProgressBar'
 import { ChevronRight } from '../shared/Icons'
 
@@ -23,10 +24,7 @@ export default function ZoneRow({
   zoneDef: ZoneDef
   onSelect: () => void
 }) {
-  const percent =
-    zone.totalQuests > 0
-      ? Math.round((zone.completedQuests / zone.totalQuests) * 100)
-      : 0
+  const percent = completionPercent(zone.completedQuests, zone.totalQuests)
 
   return (
     <button

@@ -1,17 +1,5 @@
 import logoImage from '../../../assets/wow-midnight-logo.png'
-
-function relativeTime(date: Date): string {
-  const seconds = Math.round((Date.now() - date.getTime()) / 1000)
-
-  const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
-  if (seconds < 60) return rtf.format(-seconds, 'second')
-  const minutes = Math.round(seconds / 60)
-  if (minutes < 60) return rtf.format(-minutes, 'minute')
-  const hours = Math.round(minutes / 60)
-  if (hours < 24) return rtf.format(-hours, 'hour')
-  const days = Math.round(hours / 24)
-  return rtf.format(-days, 'day')
-}
+import { relativeTime } from '../../utils/format'
 
 function SyncSpinner() {
   return (
@@ -19,6 +7,7 @@ function SyncSpinner() {
       className="h-4 w-4 animate-spin text-gold"
       viewBox="0 0 24 24"
       fill="none"
+      aria-hidden="true"
     >
       <circle
         className="opacity-25"

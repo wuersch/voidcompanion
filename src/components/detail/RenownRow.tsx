@@ -1,4 +1,5 @@
 import type { FactionRenown } from '../../domain/types'
+import { completionPercent } from '../../utils/format'
 import ProgressBar from '../shared/ProgressBar'
 
 // Map Midnight faction names to zone accent colors; default to gold
@@ -10,10 +11,7 @@ const FACTION_COLORS: Record<string, string> = {
 }
 
 export default function RenownRow({ faction }: { faction: FactionRenown }) {
-  const percent =
-    faction.maxLevel > 0
-      ? Math.round((faction.currentLevel / faction.maxLevel) * 100)
-      : 0
+  const percent = completionPercent(faction.currentLevel, faction.maxLevel)
 
   const color = FACTION_COLORS[faction.factionName] ?? 'var(--color-gold)'
 
