@@ -90,6 +90,7 @@ interface Character {
   raceName: string;
   specName: string;
   avatarUrl: string;             // from character media endpoint
+  itemLevel: number;             // equipped item level from profile summary
   lastSynced: Date;
 }
 ```
@@ -100,7 +101,6 @@ interface CampaignZone {
   zoneId: string;
   zoneName: string;              // e.g., "Eversong Woods", "Zul'Aman"
   achievementId: number;         // Blizzard achievement ID
-  wowheadUrl: string;            // e.g., "https://www.wowhead.com/achievement=41802"
   quests: Quest[];
   completedQuests: number;
   totalQuests: number;
@@ -109,7 +109,6 @@ interface CampaignZone {
 interface Quest {
   questId: number;
   questName: string;
-  wowheadUrl: string;            // e.g., "https://www.wowhead.com/quest=XXXXX"
   completed: boolean;
   chapter?: string;              // grouping within the zone storyline
 }
@@ -127,7 +126,14 @@ interface PathfinderCriterion {
   achievementId: number;
   name: string;                  // e.g., "The Midnight Explorer"
   completed: boolean;
-  wowheadUrl: string;
+  subCriteria: PathfinderSubCriterion[];
+}
+
+interface PathfinderSubCriterion {
+  id: number;                    // questline final quest ID or exploration achievement ID
+  name: string;
+  type: 'questline' | 'exploration';
+  completed: boolean;
 }
 ```
 
@@ -140,6 +146,17 @@ interface FactionRenown {
   maxLevel: number;
 }
 ```
+
+### Midnight Faction Allowlist
+
+The Blizzard API returns all factions (including old expansions); the app filters to only Midnight-relevant factions:
+
+| Faction | Faction ID | Zone | Max Renown | Wowhead Guide |
+|---------|-----------|------|------------|---------------|
+| Silvermoon Court | 2710 | Eversong Woods | 20 | https://www.wowhead.com/guide/midnight/silvermoon-court-renown-reputation-farming-rewards |
+| Amani Tribe | 2696 | Zul'Aman | 20 | https://www.wowhead.com/guide/midnight/amani-tribe-renown-reputation-farming-rewards |
+| Hara'ti | 2704 | Harandar | 20 | https://www.wowhead.com/guide/midnight/harati-renown-reputation-farming-rewards |
+| The Singularity | 2699 | Voidstorm | 20 | https://www.wowhead.com/guide/midnight/the-singularity-renown-reputation-farming-rewards |
 
 ### Sync State
 ```typescript
@@ -182,7 +199,6 @@ Structure:
       "zoneName": "Eversong Woods",
       "achievementId": 41802,
       "achievementName": "Eversong In Reprise",
-      "wowheadUrl": "https://www.wowhead.com/achievement=41802",
       "chapters": [
         {
           "name": "Chapter 1: ...",
@@ -207,7 +223,20 @@ Structure:
 | Arator's Journey | 41805 | Zone story |
 | Breaching the Voidstorm | 41806 | Zone story |
 
-The actual quest IDs within each zone story need to be curated from Wowhead once Early Access data stabilizes.
+Each Pathfinder criterion is itself a meta-achievement with sub-criteria. The zone story criteria require completing questlines (quest chains, not individual quests). The exploration criterion requires discovering sub-zones.
+
+**Pathfinder Sub-Criteria:**
+
+| Criterion | Sub-criteria (quest chains / exploration) | Type |
+|-----------|------------------------------------------|------|
+| The Midnight Explorer (61854) | Explore Eversong Woods, Explore Zul'Aman, Explore Harandar, Explore Voidstorm | Exploration |
+| Eversong In Reprise (41802) | Whispers in the Twilight, Ripple Effects, Shadowfall | Quest chain |
+| For Zul'Aman! (41803) | Dis Was Our Land, Where War Slumbers, Path of de Hash'ey, De Amani Never Die | Quest chain |
+| One Does Not Simply Walk Into Harandar (41804) | Of Caves and Cradles, Emergence, Call of the Goddess | Quest chain |
+| Arator's Journey (41805) | The Path of Light, Regrets of the Past | Quest chain |
+| Breaching the Voidstorm (41806) | Into the Abyss, Dawn of Reckoning, The Night's Veil | Quest chain |
+
+Each quest chain sub-criterion corresponds to a storyline containing multiple individual quests. The Blizzard API tracks completion at the questline level (via the final quest in each chain), not per individual quest within the chain.
 
 ---
 
@@ -235,12 +264,13 @@ Every achievement and quest in the UI links to its Wowhead page. URL pattern:
 
 ### 2. Character Dashboard
 - Grid or list of all characters on the account (pulled after first sync)
-- Each character card shows: avatar, name, realm, level, class, and a mini progress summary (e.g., "Campaign: 3/5 zones, Pathfinder: 4/6")
+- Each character card shows: avatar, name, realm, level, class, item level, and percentage-based progress badges (Campaign %, Pathfinder %, Renown %)
+- Search/filter text field above the card grid that filters characters by name or realm as the user types
 - Prominent "Sync" button with last-synced timestamp
 - Filter/sort by level, class, realm
 
 ### 3. Character Detail View
-- Character header: large avatar, name, class, level, spec
+- Character header: large avatar, name, class, level, spec, item level
 - **Campaign Progress** section: per-zone progress bars with completion percentage
 - **Pathfinder Progress** section: 6 criteria with checkmarks, links to Wowhead
 - **Renown Progress** section: per-faction renown level bars
@@ -315,15 +345,20 @@ The visual identity draws from the Midnight expansion's core tension: the golden
 - [x] Battle.net OAuth login
 - [x] Manual sync of all characters on the account
 - [x] Character dashboard with level and class info
-- [x] Campaign progress per zone (achievement-level, not quest-level for v1 if quest data curation takes time)
+- [x] Campaign progress per zone with per-quest breakdown
 - [x] Pathfinder achievement progress (6 criteria)
 - [x] Basic renown tracking per faction
 - [x] Wowhead tooltip integration and deep links
 - [x] IndexedDB persistence of synced data
 - [x] Mobile-responsive layout
+- [x] Zone drill-down with per-quest checklist grouped by chapter
+- [ ] Character search field (filter by name/realm)
+- [ ] Percentage-based stat badges (Campaign %, Pathfinder %, Renown %)
+- [ ] Item level display on character cards and detail header
+- [ ] Midnight faction filter (4 relevant factions only)
+- [ ] Pathfinder sub-criteria tracking
 
 ### Out of Scope (future)
-- [ ] Per-quest breakdown within zone stories (requires curated quest chain data)
 - [ ] Multi-account support
 - [ ] Sharing/comparing progress between users
 - [ ] Backend API proxy
@@ -391,16 +426,17 @@ src/
 - Character dashboard with cards
 - Atmospheric background and visual effects
 
-### Phase 3: Progress Tracking
+### Phase 3: Progress Tracking ✓
 - Achievement data fetching and parsing
 - Pathfinder progress display
 - Renown tracking
 - Wowhead tooltip integration
 
-### Phase 4: Quest Breakdown
-- Curate quest chain data from Wowhead for each zone
+### Phase 4: Quest Breakdown ✓
+- Curate quest chain data from Wowhead for each zone (210 quests across 15 chapters, 5 zones)
 - Completed quests cross-referencing
 - Per-quest checklist UI within zone stories
+- Zone drill-down with chapter grouping and quest status icons
 
 ---
 
