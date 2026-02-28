@@ -31,4 +31,9 @@ export interface ApiPort {
     realm: string,
     name: string,
   ): Promise<FactionRenown[]>
+  getCharacterSummary(
+    token: string,
+    realmSlug: string,
+    characterName: string,
+  ): Promise<{ itemLevel: number; specName: string }>
 }

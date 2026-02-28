@@ -5,6 +5,7 @@ export type Character = {
   name: string
   realm: string
   level: number
+  itemLevel: number
   classId: number
   className: string
   raceId: number

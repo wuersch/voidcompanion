@@ -3,6 +3,7 @@ import type { CharacterAchievementData } from '../../ports/api'
 import type {
   RawAccountProfile,
   RawCharacterMedia,
+  RawCharacterSummary,
   RawAchievements,
   RawCompletedQuests,
   RawReputations,
@@ -24,11 +25,20 @@ export function transformAccountCharacters(raw: RawAccountProfile): Character[] 
         className: c.playable_class.name,
         raceId: c.playable_race.id,
         raceName: c.playable_race.name,
+        itemLevel: 0,
         specName: '',
         avatarUrl: '',
         lastSynced: now,
       })),
   )
+}
+
+export function extractItemLevel(raw: RawCharacterSummary): number {
+  return raw.equipped_item_level ?? 0
+}
+
+export function extractSpecName(raw: RawCharacterSummary): string {
+  return raw.active_spec?.name ?? ''
 }
 
 export function extractAvatarUrl(raw: RawCharacterMedia): string {

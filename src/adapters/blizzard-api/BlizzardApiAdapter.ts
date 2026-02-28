@@ -4,6 +4,7 @@ import type { ApiPort, CharacterAchievementData } from '../../ports/api'
 import type {
   RawAccountProfile,
   RawCharacterMedia,
+  RawCharacterSummary,
   RawAchievements,
   RawCompletedQuests,
   RawReputations,
@@ -11,6 +12,8 @@ import type {
 import {
   transformAccountCharacters,
   extractAvatarUrl,
+  extractItemLevel,
+  extractSpecName,
   transformAchievements,
   transformCompletedQuests,
   transformReputations,
@@ -50,20 +53,35 @@ export class BlizzardApiAdapter implements ApiPort {
     )
     const characters = transformAccountCharacters(raw)
 
-    // Fetch avatars in parallel — individual failures are non-fatal
-    const mediaResults = await Promise.allSettled(
-      characters.map((c) =>
-        this.apiFetch<RawCharacterMedia>(
-          `/profile/wow/character/${c.realm}/${encodeURIComponent(c.name.toLowerCase())}/character-media`,
-          token,
+    // Fetch avatars and character summaries in parallel — individual failures are non-fatal
+    const [mediaResults, summaryResults] = await Promise.all([
+      Promise.allSettled(
+        characters.map((c) =>
+          this.apiFetch<RawCharacterMedia>(
+            `/profile/wow/character/${c.realm}/${encodeURIComponent(c.name.toLowerCase())}/character-media`,
+            token,
+          ),
         ),
       ),
-    )
+      Promise.allSettled(
+        characters.map((c) =>
+          this.apiFetch<RawCharacterSummary>(
+            `/profile/wow/character/${c.realm}/${encodeURIComponent(c.name.toLowerCase())}`,
+            token,
+          ),
+        ),
+      ),
+    ])
 
     for (let i = 0; i < characters.length; i++) {
-      const result = mediaResults[i]
-      if (result.status === 'fulfilled') {
-        characters[i].avatarUrl = extractAvatarUrl(result.value)
+      const media = mediaResults[i]
+      if (media.status === 'fulfilled') {
+        characters[i].avatarUrl = extractAvatarUrl(media.value)
+      }
+      const summary = summaryResults[i]
+      if (summary.status === 'fulfilled') {
+        characters[i].itemLevel = extractItemLevel(summary.value)
+        characters[i].specName = extractSpecName(summary.value)
       }
     }
 
@@ -116,5 +134,17 @@ export class BlizzardApiAdapter implements ApiPort {
       token,
     )
     return transformReputations(raw)
+  }
+
+  async getCharacterSummary(
+    token: string,
+    realmSlug: string,
+    characterName: string,
+  ): Promise<{ itemLevel: number; specName: string }> {
+    const raw = await this.apiFetch<RawCharacterSummary>(
+      `/profile/wow/character/${realmSlug}/${encodeURIComponent(characterName.toLowerCase())}`,
+      token,
+    )
+    return { itemLevel: extractItemLevel(raw), specName: extractSpecName(raw) }
   }
 }
