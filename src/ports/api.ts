@@ -6,6 +6,7 @@ export type CharacterAchievementData = {
     id: number
     completed: boolean
     completedTimestamp: number | null
+    criteria?: Array<{ id: number; completed: boolean }>
   }>
 }
 

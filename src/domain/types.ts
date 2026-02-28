@@ -37,10 +37,18 @@ export type PathfinderProgress = {
   criteria: PathfinderCriterion[]
 }
 
+export type PathfinderSubCriterion = {
+  id: number
+  name: string
+  type: string
+  completed: boolean
+}
+
 export type PathfinderCriterion = {
   achievementId: number
   name: string
   completed: boolean
+  subCriteria: PathfinderSubCriterion[]
 }
 
 export type FactionRenown = {

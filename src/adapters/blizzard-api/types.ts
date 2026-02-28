@@ -26,6 +26,12 @@ export type RawAchievements = {
     id: number
     achievement: { id: number; name: string }
     completed_timestamp?: number
+    criteria?: {
+      child_criteria?: Array<{
+        id: number
+        is_completed: boolean
+      }>
+    }
   }>
 }
 

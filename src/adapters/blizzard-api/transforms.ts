@@ -51,6 +51,10 @@ export function transformAchievements(raw: RawAchievements): CharacterAchievemen
       id: a.achievement.id,
       completed: a.completed_timestamp != null,
       completedTimestamp: a.completed_timestamp ?? null,
+      criteria: a.criteria?.child_criteria?.map((cc) => ({
+        id: cc.id,
+        completed: cc.is_completed,
+      })),
     })),
   }
 }
