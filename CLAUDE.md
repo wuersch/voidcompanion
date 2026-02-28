@@ -99,7 +99,8 @@ src/
 │       └── tooltips.ts            # Wowhead power.js loader + refreshLinks helper
 ├── data/
 │   ├── classColors.ts # WoW class ID → hex color mapping
-│   ├── pathfinder.ts  # Pathfinder achievement ID + 6 criteria definitions
+│   ├── factions.ts    # Midnight faction ID allowlist (4 factions)
+│   ├── pathfinder.ts  # Pathfinder achievement ID + 6 criteria with sub-criteria definitions
 │   └── zones.ts       # Static curated zone/chapter/quest data (210 quests from Wowhead)
 ├── hooks/
 │   ├── useAuth.ts           # Auth state hook (isAuthenticated, login, logout)
@@ -118,7 +119,7 @@ src/
     ├── dashboard/
     │   ├── CharacterDashboard.tsx  # Main dashboard orchestrator
     │   ├── DashboardTopBar.tsx     # Logo, sync button, logout
-    │   ├── DashboardFilterBar.tsx  # Realm pills + sort dropdown
+    │   ├── DashboardFilterBar.tsx  # Search input + realm pills + sort dropdown
     │   ├── CharacterGrid.tsx       # Responsive card grid + skeletons + empty state
     │   ├── CharacterCard.tsx       # Character card with avatar, info, real stat badges
     │   └── StatBadge.tsx           # Small label + value badge
@@ -154,6 +155,11 @@ src/
 - [x] **Wowhead tooltips**: Lazy-loaded power.js, hover tooltips on quest/achievement links
 - [x] **App navigation**: Conditional rendering with browser back button support (pushState/popstate)
 - [x] **Real stat badges**: Dashboard character cards show cached campaign/pathfinder/renown progress
+- [x] **Character search**: Filter bar text input filters characters by name or realm
+- [x] **Percentage badges**: Campaign/Pathfinder/Renown badges show quest-level percentages
+- [x] **Item level display**: iLvl on character cards and detail header, fetched via character summary API
+- [x] **Midnight faction filter**: Renown section shows only 4 Midnight factions (IDs in `src/data/factions.ts`)
+- [x] **Pathfinder sub-criteria**: Expandable criteria with completion badges and indented sub-items
 
 ### Next Up
 - [ ] **GitHub Pages deployment**: CI/CD pipeline

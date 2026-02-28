@@ -9,9 +9,10 @@ export default function AchievementCriterion({
   criterion: PathfinderCriterion
 }) {
   const [expanded, setExpanded] = useState(false)
-  const hasSubCriteria = criterion.subCriteria.length > 0
-  const completedCount = criterion.subCriteria.filter((sc) => sc.completed).length
-  const totalCount = criterion.subCriteria.length
+  const subs = criterion.subCriteria ?? []
+  const hasSubCriteria = subs.length > 0
+  const completedCount = subs.filter((sc) => sc.completed).length
+  const totalCount = subs.length
 
   return (
     <div>
@@ -50,7 +51,7 @@ export default function AchievementCriterion({
       </div>
       {hasSubCriteria && expanded && (
         <div className="ml-[29px] mt-2 space-y-1.5 border-l border-border-subtle pl-3">
-          {criterion.subCriteria.map((sc) => (
+          {subs.map((sc) => (
             <div key={sc.id} className="flex items-center gap-2">
               {sc.completed ? (
                 <CircleCheck size={14} className="shrink-0 text-gold" />

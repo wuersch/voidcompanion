@@ -352,11 +352,11 @@ The visual identity draws from the Midnight expansion's core tension: the golden
 - [x] IndexedDB persistence of synced data
 - [x] Mobile-responsive layout
 - [x] Zone drill-down with per-quest checklist grouped by chapter
-- [ ] Character search field (filter by name/realm)
-- [ ] Percentage-based stat badges (Campaign %, Pathfinder %, Renown %)
-- [ ] Item level display on character cards and detail header
-- [ ] Midnight faction filter (4 relevant factions only)
-- [ ] Pathfinder sub-criteria tracking
+- [x] Character search field (filter by name/realm)
+- [x] Percentage-based stat badges (Campaign %, Pathfinder %, Renown %)
+- [x] Item level display on character cards and detail header
+- [x] Midnight faction filter (4 relevant factions only)
+- [x] Pathfinder sub-criteria tracking
 
 ### Out of Scope (future)
 - [ ] Multi-account support
